@@ -1,0 +1,8 @@
+<div class="card">
+  <h1>Liste des circuits</h1>
+    <% @hikes.each do |hike| %>
+      <li><%= hike.name %></li>
+      <li>Description: <%= hike.description %></li>
+      <li>Durée: <%= hike.time %></li>
+    <% end %>
+</div>
