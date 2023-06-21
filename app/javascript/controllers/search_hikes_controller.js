@@ -28,4 +28,23 @@ export default class extends Controller {
       this.listTarget.outerHTML = data.listes;
     })
   }
+  update_with_category(event){
+    event.preventDefault();
+    console.log(event)
+    // const query = event.currentTarget.value;
+    // const url = `${this.formTarget.action}?query=${query}`;
+
+    // fetch(url,{
+    //   method: "GET"
+    //   headers: {
+    //     'Accept': 'application/json'
+    //   }
+    // })
+    // .then(response => response.json())
+    // .then((data) => {
+    //   // console.log(data)
+    //   // console.log(data.listes)
+    //   this.listTarget.outerHTML = data.listes;
+    // })
+  }
 }

@@ -3,16 +3,9 @@ class HikesController < ApplicationController
     @hikes = policy_scope(Hike)
     if params[:query].present?
       # sql_subquery = "name ILIKE :query OR description ILIKE :query"
-      sql_subquery = <<~SQL
-      hikes.name ILIKE :query
-      OR hikes.description ILIKE :query
-      OR categories.name ILIKE :query
-      SQL
-      # @hikes = @hikes.where(sql_subquery, query: "%#{params[:query]}%")
-      @hikes = @hikes.joins(:categories).where(sql_subquery, query: "%#{params[:query]}%")
+      @hikes = Hike.hike_search(params[:query])
       respond_to do |format|
         format.html { redirect_to hikes_path }
-        # format.json { render json: @hikes }
         format.json
       end
     end
