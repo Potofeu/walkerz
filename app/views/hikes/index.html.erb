@@ -18,7 +18,7 @@
       <ul class="nav justify-content-center align-middle">
         <li class="nav-item">
           <% @categories.each do |category| %>
-            <%= link_to category.name, hikes_path(query: category.name), class: "badge rounded-pill text-bg-secondary text-decoration-none", data: { action: 'clic->search-hikes#update_with_category' } %>
+            <%= link_to category.name, hikes_path(query: category.name), data: { action: 'click->search-hikes#update_with_category', search_hikes_target: "category" }, class: "badge rounded-pill text-bg-secondary text-decoration-none" %>
           <% end %>
         </li>
       </ul>
