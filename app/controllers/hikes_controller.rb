@@ -10,10 +10,10 @@ class HikesController < ApplicationController
       SQL
       # @hikes = @hikes.where(sql_subquery, query: "%#{params[:query]}%")
       @hikes = @hikes.joins(:categories).where(sql_subquery, query: "%#{params[:query]}%")
-
       respond_to do |format|
-        format.html
-        format.json { render json: @hikes }
+        format.html { redirect_to hikes_path }
+        # format.json { render json: @hikes }
+        format.json
       end
     end
   end

@@ -24,7 +24,8 @@ export default class extends Controller {
     .then(response => response.json())
     .then((data) => {
       // console.log(data)
-      this.listTarget.outerHTML = data;
+      // console.log(data.listes)
+      this.listTarget.outerHTML = data.listes;
     })
   }
 }
