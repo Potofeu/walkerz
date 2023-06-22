@@ -3,8 +3,8 @@ require 'faker'
 puts 'Clearing database...'
 HikesCategory.destroy_all
 Category.destroy_all
-Location.destroy_all
 PointsOfInterest.destroy_all
+Location.destroy_all
 Favorite.destroy_all
 Review.destroy_all
 Hike.destroy_all
@@ -24,12 +24,15 @@ User.create!(email: 'sabrina@test.com', password: '123456', first_name: 'Sabrina
 User.create!(email: 'hugo@test.com', password: '123456', first_name: 'Hugo', last_name: 'LEWAGON')
 
 puts 'Creating hikes...'
+
+cities = ["Paris", "Lyon", "Marseille", "Lille", "Bordeaux", "Nantes"]
 20.times do
   hike = Hike.create!(
     name: Faker::Food.dish,
     description: Faker::Food.description,
     time: rand(1..8),
     distance: rand(3..20),
+    city: cities.sample,
     user_id: User.all.sample.id
   )
   puts "Nouvelle balade: #{hike.name}"
