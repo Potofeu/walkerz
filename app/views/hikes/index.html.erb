@@ -10,7 +10,7 @@
                 value: params[:query],
                 data: { action: 'keyup->search-hikes#update', search_hikes_target: "input"}
             %>
-          <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+          <%= submit_tag "Locate", name: "", class: "btn btn-primary", data: { action: 'click->search-hikes#locate', search_hikes_target: "btn_locate"} %>
           <% end %>
         </div>
       </div>

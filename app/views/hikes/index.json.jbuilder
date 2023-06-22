@@ -1,1 +1,1 @@
-json.listes render(partial: "listes", formats: :html, locals: {hikes: @hikes})
+json.listes render(partial: "listes", formats: :html, locals: { hikes: @hikes } )
