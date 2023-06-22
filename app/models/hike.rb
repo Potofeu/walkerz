@@ -10,7 +10,7 @@ class Hike < ApplicationRecord
   include PgSearch::Model
   multisearchable against: [ :name, :description, :time, :distance ]
   pg_search_scope :hike_search,
-                  against: [ :name, :description, :time, :distance ],
+                  against: [ :name, :description, :time, :distance, :city ],
                   associated_against: {
                     categories: [:name],
                     locations: [:address, :description]
