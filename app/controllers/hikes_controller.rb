@@ -4,9 +4,9 @@ class HikesController < ApplicationController
     if params[:query].present?
       # sql_subquery = "name ILIKE :query OR description ILIKE :query"
       sql_subquery = <<~SQL
-      hikes.name ILIKE :query
-      OR hikes.description ILIKE :query
-      OR categories.name ILIKE :query
+        hikes.name ILIKE :query
+        OR hikes.description ILIKE :query
+        OR categories.name ILIKE :query
       SQL
       # @hikes = @hikes.where(sql_subquery, query: "%#{params[:query]}%")
       @hikes = @hikes.joins(:categories).where(sql_subquery, query: "%#{params[:query]}%")
@@ -16,5 +16,27 @@ class HikesController < ApplicationController
         format.json { render json: @hikes }
       end
     end
+  end
+
+  def new
+    @hike = Hike.new
+    authorize @hike
+  end
+
+  def create
+    @hike = Hike.new(hike_params)
+    @hike.creator = current_user
+    authorize @hike
+    if @hike.save!
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def hike_params
+    params.require(:hike).permit(:name, :description, :time, :distance, :city)
   end
 end
