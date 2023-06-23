@@ -1,0 +1,22 @@
+.location-tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.location-tag-selector + label {
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.3rem 0.8rem;
+  background-color: white;
+  color: #E57C23;
+  border: 1px solid #E57C23;
+  margin-bottom: 0.2rem;
+  margin: 0px auto;
+  width: 100%;
+}
+
+.location-tag-selector:checked + label {
+  background-color: #e4b994;
+  color: #E57C23;
+}
