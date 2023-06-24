@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <div class="row-fluid" data-controller="search-hikes">
+      <div class="row-fluid">
+        <div class="searchbar">
+          <%= form_with url: hikes_path, method: :get, class: "d-flex", data: {search_hikes_target: "form"} do %>
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Circuit, Ville...",
+                value: params[:query],
+                data: { action: 'keyup->search-hikes#update', search_hikes_target: "input"}
+            %>
+          <%= submit_tag "Locate", name: "", class: "btn btn-primary", data: { action: 'click->search-hikes#locate', search_hikes_target: "btn_locate"} %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row-fluid mt-4 mb-4">
+      <ul class="nav justify-content-center align-middle">
+        <li class="nav-item">
+          <% @categories.each do |category| %>
+            <%= link_to category.name, hikes_path(query: category.name), data: { action: 'click->search-hikes#update_with_category', search_hikes_target: "category" }, class: "badge rounded-pill text-bg-secondary text-decoration-none" %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="row-fluid mt-5">
+      <%= render 'listes', hikes: @hikes %>
+    </div>
+  </div>
+</div>
