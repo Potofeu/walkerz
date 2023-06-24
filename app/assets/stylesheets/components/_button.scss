@@ -1,0 +1,81 @@
+.btn-orange {
+  background:$orange;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+
+.btn-orange:hover {
+  background:#fff;
+  color:$orange;
+}
+
+.btn-orange:before,.btn-orange:after {
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: $orange;
+  transition:400ms ease all;
+}
+
+.btn-orange:after {
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+
+.btn-orange:hover:before,.btn-orange:hover:after {
+  width:100%;
+  transition:800ms ease all;
+}
+
+.btn-blue {
+  background:$dark-blue;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+
+.btn-blue:hover {
+  background:#fff;
+  color:$dark-blue;
+}
+
+.btn-blue:before,.btn-blue:after {
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: $dark-blue;
+  transition:400ms ease all;
+}
+
+.btn-blue:after {
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+
+.btn-blue:hover:before,.btn-blue:hover:after {
+  width:100%;
+  transition:800ms ease all;
+}

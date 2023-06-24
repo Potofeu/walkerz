@@ -1,0 +1,28 @@
+.footer {
+  position: fixed;
+  height: 4rem;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid $orange;
+  font-size: 20px;
+
+
+  h6 {
+  margin-top: 2px;
+  font-size: 14px;
+  }
+
+  .container {
+    margin-top: 6px;
+  }
+
+  a {
+    text-decoration: none;
+    color: $pale-pink;
+  }
+
+  img {
+    width: 50px;
+  }
+}
