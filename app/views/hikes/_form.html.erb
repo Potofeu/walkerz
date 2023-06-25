@@ -1,8 +1,6 @@
 <%= simple_form_for hike do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :time, as: :float %>
-  <%= f.input :distance, as: :integer %>
   <%= f.input :city %>
   <%= f.association :categories,
                     as: :check_boxes,
