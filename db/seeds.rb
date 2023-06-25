@@ -55,13 +55,14 @@ puts 'Creating locations...'
 location_names = ["The french bastards - Oberkampf", "Place de la Bastille", "Jardin des Plantes", "Les Catacombes de Paris", "Chez Bébert"]
 location_address = ["61 Rue Oberkampf, 75011 Paris", "Place de la Bastille, 75004 Paris", "57 Rue Cuvier, 75005 Paris", "1 Av. du Colonel Henri Rol-Tanguy, 75014 Paris", "71 Bd du Montparnasse, 75006 Paris"]
 (0..4). each do |number|
-    location = Location.create!(
-      name: location_names[number],
-      description: Faker::Quotes::Shakespeare.hamlet_quote,
-      address: location_address[number]
-    )
-    puts "Nouvel endroit: #{location.name}"
+  location = Location.create!(
+    name: location_names[number],
+    description: Faker::Quotes::Shakespeare.hamlet_quote,
+    address: location_address[number]
+  )
+  puts "Nouvel endroit: #{location.name}"
 end
+
 puts "Creating Points of Interest..."
 Hike.all.each do |hike|
   5.times do
