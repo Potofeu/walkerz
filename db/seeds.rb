@@ -1,4 +1,6 @@
 require 'faker'
+require "json"
+require "open-uri"
 
 puts 'Clearing database...'
 HikesCategory.destroy_all
@@ -25,10 +27,11 @@ User.create!(email: 'hugo@test.com', password: '123456', first_name: 'Hugo', las
 
 puts 'Creating hikes...'
 
-cities = ["Paris", "Lyon", "Marseille", "Lille", "Bordeaux", "Nantes"]
-20.times do
+names = ["Le moyen-âge à paris", "Paris food tour", "Les immanquables de la capitale", "Le paris secret", "Parcs et jardins"]
+cities = ["Paris", "Lyon", "Marseille", "Lille", "Nantes", "Quimper", "Bordeaux", "Strasbourg"]
+names.each do |name|
   hike = Hike.create!(
-    name: Faker::Food.dish,
+    name: name,
     description: Faker::Food.description,
     time: rand(1..8),
     distance: rand(3..20),
@@ -40,7 +43,7 @@ end
 
 puts "Putting categories in our hikes..."
 
-30.times do
+10.times do
   HikesCategory.create!(
     hike_id: Hike.all.sample.id,
     category_id: Category.all.sample.id
@@ -48,28 +51,17 @@ puts "Putting categories in our hikes..."
 end
 
 puts 'Creating locations...'
-addresses = [
-  "Pl. de l'Opéra, 75009 Paris",
-  "Rue de la Petite Truanderie, 75001 Paris",
-  "24 Rue de Sèvres, 75007 Paris",
-  "1 Rue Pierre et Marie Curie, 75005 Paris",
-  "261 Bd Raspail, 75014 Paris",
-  "2 Pl. Joffre, 75007 Paris",
-  "37 Rue Marbeuf, 75008 Paris",
-  "158 Bd Haussmann, 75008 Paris",
-  "64 Rue Sainte-Anne, 75002 Paris",
-  "17 Rue Le Peletier, 75009 Paris"
- ]
 
-addresses.each do |place|
-  location = Location.create!(
-    name: Faker::Fantasy::Tolkien.location,
-    description: Faker::Quotes::Shakespeare.hamlet_quote,
-    address: place
-  )
-  puts "Nouvel endroit: #{location.name}"
+location_names = ["The french bastards - Oberkampf", "Place de la Bastille", "Jardin des Plantes", "Les Catacombes de Paris", "Chez Bébert"]
+location_address = ["61 Rue Oberkampf, 75011 Paris", "Place de la Bastille, 75004 Paris", "57 Rue Cuvier, 75005 Paris", "1 Av. du Colonel Henri Rol-Tanguy, 75014 Paris", "71 Bd du Montparnasse, 75006 Paris"]
+(0..4). each do |number|
+    location = Location.create!(
+      name: location_names[number],
+      description: Faker::Quotes::Shakespeare.hamlet_quote,
+      address: location_address[number]
+    )
+    puts "Nouvel endroit: #{location.name}"
 end
-
 puts "Creating Points of Interest..."
 Hike.all.each do |hike|
   5.times do
@@ -84,7 +76,7 @@ end
 puts "Creating reviews..."
 10.times do
   Review.create(
-    content: Faker::Movies::StarWars.wookiee_sentence,
+    content: Faker::Books::Lovecraft.sentence,
     rating: rand(1..5),
     user_id: User.all.sample.id,
     hike_id: Hike.all.sample.id
