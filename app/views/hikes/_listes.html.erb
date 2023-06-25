@@ -6,6 +6,7 @@
           <% @hikes.each do |hike| %>
             <div class="py-2">
               <strong><%= hike.name %></strong>
+              <%= cl_image_tag hike.locations.first.photo.key, height: 150, width: 200, crop: :fill %>
               <br>Description: <%= hike.description %>
               <br>Durée: <%= hike.time %>
             </div>
