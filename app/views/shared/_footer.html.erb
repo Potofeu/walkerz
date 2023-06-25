@@ -1,31 +1,31 @@
 <div class="footer">
   <div class="container">
     <% if user_signed_in? %>
-      <div class="row d-flex justify-content-between">
-        <div class="col-2">
+      <div class="d-flex justify-content-between">
+        <div class="footer-item">
             <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
             <h6>Explorer</h6>
         </div>
-        <div class="col-2">
+        <div class="footer-item">
           <i class="fa-solid fa-circle-plus"></i>
           <h6>Parcours</h6>
         </div>
-        <div class="col-2">
+        <div class="">
           <%= link_to root_path do %>
-            <%= image_tag "/Users/mickaelsouchet/code/ngleisen/walkerz/app/assets/images/Logo_walkerz_V4.png" %>
+            <%= image_tag "Logo_walkerz_V5.png" %>
           <% end %>
         </div>
-        <div class="col-2">
+        <div class="footer-item">
           <i class="fa-regular fa-bookmark"></i>
           <h6>Favoris</h6>
         </div>
-        <div class="col-2">
+        <div class="footer-item">
           <i class="fa-regular fa-user"></i>
           <h6>Profil</h6>
         </div>
     <% else %>
-      <div class="row d-flex justify-content-center">
-        <div class="col-4">
+      <div class="d-flex justify-content-evenly">
+        <div class="footer-item">
           <%= link_to new_user_registration_path, class: "footer-link" do %>
             <div class= "text-center">
               <i class="fa-solid fa-user-plus"></i>
@@ -33,12 +33,12 @@
             </div>
           <% end %>
         </div>
-        <div class="col-4">
+        <div class="">
           <%= link_to root_path do %>
-            <%= image_tag "/Users/mickaelsouchet/code/ngleisen/walkerz/app/assets/images/Logo_walkerz_V4.png" %>
+            <%= image_tag "Logo_walkerz_V5.png" %>
           <% end %>
         </div>
-        <div class="col-4">
+        <div class="footer-item">
           <%= link_to new_user_session_path, class: "footer-link" do %>
             <div class= "text-center">
               <i class="fa-solid fa-user-check"></i>

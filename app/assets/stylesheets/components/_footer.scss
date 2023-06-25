@@ -1,20 +1,19 @@
 .footer {
   position: fixed;
-  height: 4rem;
+  height: 6rem;
   bottom: 0;
   left: 0;
   width: 100%;
   border-top: 1px solid $orange;
-  font-size: 20px;
-
+  font-size: 24px;
 
   h6 {
   margin-top: 2px;
-  font-size: 14px;
+  font-size: 18px;
   }
 
   .container {
-    margin-top: 6px;
+    padding-top: 7px;
   }
 
   a {
@@ -23,6 +22,13 @@
   }
 
   img {
-    width: 50px;
+    width: 90px;
+    vertical-align: top;
   }
+
+}
+
+.footer-item {
+  text-align: center;
+  padding-top: 7px;
 }

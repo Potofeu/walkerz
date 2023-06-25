@@ -1,0 +1,10 @@
+.nav-item a {
+  font-size: 16px;
+  font-weight: normal;
+  padding: 8px 10px 8px 10px;
+  margin: 4px;
+
+  .fa-filter-circle-xmark {
+    text-shadow: 1px 1px $dark-blue;
+  }
+}
