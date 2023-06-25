@@ -1,0 +1,12 @@
+<%= simple_form_for hike do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :time, as: :float %>
+  <%= f.input :distance, as: :integer %>
+  <%= f.input :city %>
+  <%= f.association :categories,
+                    as: :check_boxes,
+                    input_html: { class: "tag-selector" },
+                    item_wrapper_class: 'tag-item' %>
+  <%= f.button :submit %>
+<% end %>

@@ -20,6 +20,7 @@ class HikesController < ApplicationController
 
   def new
     @hike = Hike.new
+    @location = Location.new
     authorize @hike
   end
 
