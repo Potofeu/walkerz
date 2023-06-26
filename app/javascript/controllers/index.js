@@ -7,7 +7,11 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import SearchLocationController from "./search_location_controller"
-application.register("search-location", SearchLocationController)
+import NewLocationController from "./new_location_controller"
+application.register("new-location", NewLocationController)
+
 import SearchHikesController from "./search_hikes_controller"
 application.register("search-hikes", SearchHikesController)
+
+import SearchLocationController from "./search_location_controller"
+application.register("search-location", SearchLocationController)

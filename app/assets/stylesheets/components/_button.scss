@@ -34,3 +34,16 @@
   color:$dark-blue;
   border: 2px solid $dark-blue;
 }
+
+.new-location-button {
+  border-bottom: 1px solid $orange;
+  color: orange;
+}
+
+.new-location-button {
+  border: none;
+  border-bottom: 1px solid $orange;
+  color: orange;
+  background-color: white;
+  width: 100%;
+}

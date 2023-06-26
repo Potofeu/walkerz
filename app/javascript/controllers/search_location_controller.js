@@ -5,17 +5,14 @@ import {v4 as uuidv4} from 'uuid';
 export default class extends Controller {
   static targets = ["form", "input", "list", "card"]
 
-  connect() {
-
-  }
-
   drawResponseList(data) {
     this.listTarget.innerHTML = '';
     data.suggestions.forEach(suggestion => {
-      this.listTarget.insertAdjacentHTML('beforeend', `<p><strong>${suggestion.name}</strong></p>`)
-      if (suggestion.full_address) {
-        this.listTarget.insertAdjacentHTML('beforeend', `<p>${suggestion.full_address}</p>`)
-      }
+        this.listTarget.insertAdjacentHTML('beforeend', `<button name="button" type="button" class="new-location-button" data-new-location-target="btn" data-action="click -> new-location#send">
+                                                          <p><strong>${suggestion.name}</strong></p>
+                                                          <p>${suggestion.full_address}</p>
+                                                          </button>`
+                                          )
     })
   }
 
