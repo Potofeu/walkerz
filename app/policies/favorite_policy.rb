@@ -1,4 +1,4 @@
-class HikePolicy < ApplicationPolicy
+class FavoritePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
@@ -8,11 +8,11 @@ class HikePolicy < ApplicationPolicy
       scope.all
     end
 
-    def index
+    def create?
       true
     end
 
-    def show?
+    def index?
       true
     end
   end

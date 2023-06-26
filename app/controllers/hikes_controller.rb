@@ -1,4 +1,6 @@
 class HikesController < ApplicationController
+  before_action :set_hike, only: [:show, :edit, :update]
+
   def index
     @hikes = policy_scope(Hike)
     @categories = Category.all
@@ -24,6 +26,12 @@ class HikesController < ApplicationController
   end
 
   def show
+    authorize @hike
+  end
+
+  private
+
+  def set_hike
     @hike = Hike.find(params[:id])
   end
 end

@@ -16,8 +16,10 @@
           <% end %>
         </div>
         <div class="footer-item">
-          <i class="fa-regular fa-bookmark"></i>
-          <h6>Favoris</h6>
+          <%= link_to favorites_path do%>
+            <i class="fa-regular fa-bookmark"></i>
+            <h6>Favoris</h6>
+          <% end %>
         </div>
         <div class="dropup">
           <div class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
