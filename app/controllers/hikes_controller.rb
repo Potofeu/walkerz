@@ -22,4 +22,8 @@ class HikesController < ApplicationController
       end
     end
   end
+
+  def show
+    @hike = Hike.find(params[:id])
+  end
 end
