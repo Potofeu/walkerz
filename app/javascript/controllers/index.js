@@ -4,14 +4,11 @@
 
 import { application } from "./application"
 
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import NewLocationController from "./new_location_controller"
-application.register("new-location", NewLocationController)
-
 import SearchHikesController from "./search_hikes_controller"
 application.register("search-hikes", SearchHikesController)
-
-import SearchLocationController from "./search_location_controller"
-application.register("search-location", SearchLocationController)

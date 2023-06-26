@@ -32,13 +32,15 @@ class HikesController < ApplicationController
   def create
     @hike = Hike.new(hike_params)
     @hike.creator = current_user
+    @hike.time = 0
+    @hike.distance = 0
     authorize @hike
     if @hike.save!
       @hike_categories = params[:hike][:category_ids]
       @hike_categories.each do |category|
         HikesCategory.create(hike_id: @hike.id, category_id: category.to_i)
       end
-      redirect_to root_path
+      redirect_to new_hike_location_path(@hike)
     else
       render :new, status: :unprocessable_entity
     end

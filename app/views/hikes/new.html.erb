@@ -1,18 +1,2 @@
 <h1>New hike</h1>
 <%= render 'form' , hike: @hike %>
-<div data-controller="new-location">
-  <div data-new-location-target="items">
-  </div>
-  <h2>Points d'étapes:</h2>
-  <div data-controller="search-location">
-    <%= simple_form_for @location, html: { data: {search_location_target: 'form', action: 'submit->search-location#update'} } do |f| %>
-      <%= f.input :address, input_html: { "data-search-location-target" => "input"} %>
-      <%= f.submit %>
-    <% end %>
-    <div data-search-location-target="card" class ="mb-5">
-      <ul data-search-location-target="list">
-      <button data-new-location-target="btn" class="d-none"></button>
-      </ul>
-    </div>
-  </div>
-</div>
