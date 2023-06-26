@@ -1,0 +1,36 @@
+.hike-cards {
+  margin-top: 14px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.hike-card {
+  text-decoration: none;
+  color: $dark-blue;
+
+  &:hover {
+    text-decoration: none;
+    color: $dark-blue;
+  }
+}
+
+.hike-card .hike-image {
+  background-position: center;
+  background-size: cover;
+  height: 250px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: right;
+  padding: 16px;
+  }
+
+.hike-card .hike-image i {
+  font-size: 28px;
+  color: rgb(75, 75, 75);
+  -webkit-text-stroke: 1px #fff;
+}
+
+.hike-card .hike-info p {
+  margin: 0px;
+  color: rgb(140, 140, 140);
+}
