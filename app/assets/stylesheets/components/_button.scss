@@ -1,0 +1,36 @@
+.btn-orange {
+  background: $orange;
+  color: $pale-pink;
+  position:relative;
+  height: 32px;
+  font-size: 16px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition:0.15s ease all;
+  border-radius: 12px;
+}
+
+.btn-orange:hover {
+  background: $pale-pink;
+  color:$orange;
+  border: 2px solid $orange;
+}
+
+.btn-blue {
+  background: $dark-blue;
+  color: $pale-pink;
+  position: relative;
+  height: 32px;
+  font-size: 16px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: 0.15s ease all;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.btn-blue:hover {
+  background: $pale-pink;
+  color:$dark-blue;
+  border: 2px solid $dark-blue;
+}

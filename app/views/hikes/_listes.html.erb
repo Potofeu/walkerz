@@ -1,8 +1,15 @@
-<div class="card">
-  <h1>Liste des circuits</h1>
-    <% @hikes.each do |hike| %>
-      <li><%= hike.name %></li>
-      <li>Description: <%= hike.description %></li>
-      <li>Durée: <%= hike.time %></li>
-    <% end %>
-</div>
+
+  <div class="py-3"data-search-hikes-target="list">
+    <h1>Liste des circuits</h1>
+    <div class="row">
+      <div class="col-12">
+          <% @hikes.each do |hike| %>
+            <div class="py-2">
+              <strong><%= hike.name %></strong>
+              <br>Description: <%= hike.description %>
+              <br>Durée: <%= hike.time %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>

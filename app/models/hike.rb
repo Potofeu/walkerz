@@ -11,4 +11,15 @@ class Hike < ApplicationRecord
   validates :time, presence: true
   validates :distance, presence: true
   validates :city, presence: true
+  include PgSearch::Model
+  multisearchable against: [ :name, :description, :time, :distance ]
+  pg_search_scope :hike_search,
+                  against: [ :name, :description, :time, :distance, :city ],
+                  associated_against: {
+                    categories: [:name],
+                    locations: [:address, :description]
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end

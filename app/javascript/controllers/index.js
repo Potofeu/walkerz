@@ -9,3 +9,5 @@ application.register("hello", HelloController)
 
 import SearchLocationController from "./search_location_controller"
 application.register("search-location", SearchLocationController)
+import SearchHikesController from "./search_hikes_controller"
+application.register("search-hikes", SearchHikesController)
