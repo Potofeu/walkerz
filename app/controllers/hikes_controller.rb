@@ -26,5 +26,13 @@ class HikesController < ApplicationController
   def show
     @hike = Hike.find(params[:id])
     authorize @hike
+    # On récupère la liste des coordonnées pour les circuits
+    @markers = @hike.locations.geocoded.map do |location|
+      {
+        lat: location.latitude,
+        lng: location.longitude
+      }
+    end
+
   end
 end
