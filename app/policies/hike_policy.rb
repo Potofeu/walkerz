@@ -7,8 +7,14 @@ class HikePolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-    def index
+
+    def index?
       true
     end
+
+  end
+
+  def show?
+    true
   end
 end

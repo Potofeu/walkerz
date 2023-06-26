@@ -24,10 +24,18 @@
   padding: 16px;
   }
 
-.hike-card .hike-image i {
+.hike-card .hike-image {
   font-size: 28px;
   color: rgb(75, 75, 75);
   -webkit-text-stroke: 1px #fff;
+}
+
+.hike-image-show{
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  height: 10rem;
+  width: 100%;
 }
 
 .hike-card .hike-info p {

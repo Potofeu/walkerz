@@ -25,5 +25,6 @@ class HikesController < ApplicationController
 
   def show
     @hike = Hike.find(params[:id])
+    authorize @hike
   end
 end
