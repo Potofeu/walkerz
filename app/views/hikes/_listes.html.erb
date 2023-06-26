@@ -3,7 +3,7 @@
     <h1>Liste des circuits</h1>
     <div class="row">
       <div class="col-12">
-        <div class="hikes-cards">
+        <div class="hikes-cards" data-controller="favorites">
           <% @hikes.each do |hike| %>
             <div class="py-2">
               <%= link_to hike_path(hike), class: 'hike-card' do %>

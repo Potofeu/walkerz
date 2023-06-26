@@ -1,0 +1,30 @@
+<div class="top-page">
+  <h2>Rediscover places like never before</h2>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <h1 class="mt-3 text-center">Mes favoris: </h1>
+      <div class="col-12">
+        <% @favorites.each do |favorite| %>
+          <div class="fav-product mb-3">
+            <%= cl_image_tag favorite.hike.locations.first.photo.key %>
+            <div class="fav-infos">
+              <div class="row justify-content-center">
+                <div class="col-7 text-center">
+                  <h6><%= favorite.hike.name %></h6>
+                </div>
+                <div class="col-5 text-center">
+                  <p><i class="fa-solid fa-shoe-prints"></i> <%= favorite.hike.distance %>km</p>
+                </div>
+                <p><%= favorite.hike.description.truncate(95) %></p>
+                <div class="text-center">
+                  <button class="btn btn-orange">Plus d'info</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
