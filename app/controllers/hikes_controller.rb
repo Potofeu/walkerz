@@ -33,6 +33,5 @@ class HikesController < ApplicationController
         lng: location.longitude
       }
     end
-
   end
 end
