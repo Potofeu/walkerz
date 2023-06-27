@@ -19,7 +19,8 @@
                 </div>
                 <p><%= favorite.hike.description.truncate(95) %></p>
                 <div class="text-center">
-                  <button class="btn btn-orange">Plus d'info</button>
+                  <button class="btn btn-orange"><%= link_to "Plus d'info", hike_path(favorite.hike) %></button>
+
                 </div>
               </div>
             </div>

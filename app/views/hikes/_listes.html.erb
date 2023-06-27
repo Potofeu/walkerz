@@ -8,7 +8,11 @@
             <div class="py-2">
               <%= link_to hike_path(hike), class: 'hike-card' do %>
                 <div class="hike-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path hike.locations.first.photo.key %>')">
-                  <i class="fa-solid fa-bookmark"></i>
+                  <% if hike.favorites.present? %>
+                    <i class="fa-solid fa-bookmark" style="color: #e57c23;"></i>
+                    <% else %>
+                    <i class="fa-regular fa-bookmark"></i>
+                    <% end %>
                 </div>
                 <div class="hike-description pt-1">
                   <div class="hike-info">
