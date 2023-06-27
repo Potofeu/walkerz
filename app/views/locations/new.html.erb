@@ -8,9 +8,11 @@
    %>
   <%= f.button :submit, "+", class: "new-location-button" %>
 <% end %>
-<% @hike.locations.each do |location| %>
-  <div class="location-tag">
-    <i class="fa-solid fa-bars"></i>
-    <p><%= location.name %></p>
-  </div>
-<% end %>
+<div data-controller="sortable">
+  <% @hike.locations.each do |location| %>
+    <div class="location-tag">
+      <i class="fa-solid fa-bars"></i>
+      <p><%= location.name %></p>
+    </div>
+  <% end %>
+</div>

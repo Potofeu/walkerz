@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import SearchHikesController from "./search_hikes_controller"
 application.register("search-hikes", SearchHikesController)
+
+import SortableController from "./sortable_controller"
+application.register("sortable", SortableController)

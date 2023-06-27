@@ -12,6 +12,9 @@
   display: flex;
   align-items: center;
 }
+.location-tag:hover {
+  cursor:grab
+}
 
 .location-tag i {
   margin: 0.2rem 0.4rem;
