@@ -25,6 +25,13 @@ class FavoritesController < ApplicationController
     @favorites = @user.favorites
   end
 
+  def destroy
+    @favorite = Favorite.find(params[:id])
+    authorize @favorite
+    @favorite.destroy
+    redirect_to favorites_path, status: :see_other
+  end
+
   private
 
   def set_hike

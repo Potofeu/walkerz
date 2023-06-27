@@ -12,15 +12,17 @@
             <div class="fav-infos">
               <div class="row justify-content-center">
                 <div class="col-7 text-center">
-                  <h6><%= favorite.hike.name %></h6>
+                  <h6><%= favorite.hike.name.capitalize.truncate(18) %></h6>
                 </div>
                 <div class="col-5 text-center">
                   <p><i class="fa-solid fa-shoe-prints"></i> <%= favorite.hike.distance %>km</p>
                 </div>
-                <p><%= favorite.hike.description.truncate(95) %></p>
-                <div class="text-center">
-                  <button class="btn btn-orange"><%= link_to "Plus d'info", hike_path(favorite.hike) %></button>
-
+                  <p><%= favorite.hike.description.truncate(95) %></p>
+                <div class="d-flex justify-content-evenly mb-1">
+                  <%= link_to "Plus d'info", hike_path(favorite.hike), class: "btn btn-orange" %>
+                  <%= link_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr de supprimer ce circuit?"}, class: 'btn btn-blue' do %>
+                    <i class="fa-solid fa-xmark"></i> Retirer
+                  <% end %>
                 </div>
               </div>
             </div>

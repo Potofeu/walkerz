@@ -3,6 +3,7 @@ class HikesController < ApplicationController
 
   def index
     @hikes = policy_scope(Hike)
+    @user = current_user
     @categories = Category.all
     if params[:latitude].present? && params[:longitude].present?
       latitude = params[:latitude].to_f

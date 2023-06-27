@@ -8,12 +8,16 @@ class FavoritePolicy < ApplicationPolicy
       scope.all
     end
 
-    def create?
-      true
-    end
-
     def index?
       true
     end
+  end
+
+  def create?
+    true
+  end
+
+  def destroy?
+    true
   end
 end

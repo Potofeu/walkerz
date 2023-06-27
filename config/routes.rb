@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "hikes#index"
 
-  resources :favorites, only: [:index]
+  resources :favorites, only: [:index, :destroy]
 
   resources :hikes do
     resources :favorites, only: [:new, :create]

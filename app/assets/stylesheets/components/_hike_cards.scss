@@ -28,7 +28,7 @@
 .hike-card .hike-image {
   font-size: 28px;
   color: rgb(100, 100, 100);
-  opacity: 0.8;
+  opacity: 1;
   -webkit-text-stroke: 1px white;
 }
 
@@ -43,4 +43,13 @@
 .hike-card .hike-info p {
   margin: 0px;
   color: rgb(140, 140, 140);
+}
+
+#orange {
+  color: $orange;
+  opacity: 0.85;
+}
+
+#grey {
+  opacity: 0.85;
 }
