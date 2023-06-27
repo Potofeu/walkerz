@@ -10,6 +10,11 @@
   border-radius: 12px;
 }
 
+.btn-orange a{
+  text-decoration: none;
+  color: white;
+}
+
 .btn-orange:hover {
   background: $pale-pink;
   color:$orange;
