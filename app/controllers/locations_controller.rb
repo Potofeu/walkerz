@@ -13,10 +13,17 @@ class LocationsController < ApplicationController
     @hike = Hike.find(params[:hike_id])
     authorize @location
 
-    if @location.save!
-      redirect_to locations_path
+    if Location.exists?(address: @location.address)
+      @existing_location = Location.find_by address: @location.address
+      PointsOfInterest.create!(hike_id: @hike.id, location_id: @existing_location.id)
+      redirect_to new_hike_location_path(@hike)
     else
-      render :new, statut: :unprocessable_entity
+      if @location.save!
+        PointsOfInterest.create!(hike_id: @hike.id, location_id: @location.id)
+        redirect_to new_hike_location_path(@hike)
+      else
+        render :new, statut: :unprocessable_entity
+      end
     end
   end
 

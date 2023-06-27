@@ -1,10 +1,16 @@
-<%= simple_form_for [@hike, @location] , html: { data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} } do |f|%>
+<%= simple_form_for [@hike, @location] , html: { data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"], class: "d-flex"} } do |f|%>
   <%= f.input :name,
-    input_html: {data: {address_autocomplete_target: "name"}},
+    input_html: {data: {address_autocomplete_target: "name"}, class: "d-none"},
     wrapper_html: {data: {address_autocomplete_target: "wrapper"}}
    %>
   <%= f.input :address,
-    input_html: {data: {address_autocomplete_target: "address"}}
+    input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}
    %>
-  <%= f.submit %>
+  <%= f.button :submit, "+", class: "new-location-button" %>
+<% end %>
+<% @hike.locations.each do |location| %>
+  <div class="location-tag">
+    <i class="fa-solid fa-bars"></i>
+    <p><%= location.name %></p>
+  </div>
 <% end %>
