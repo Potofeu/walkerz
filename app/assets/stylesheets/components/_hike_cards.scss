@@ -25,11 +25,19 @@
   box-shadow: 0 2px 2px rgba(0,0,0,0.2);
   }
 
-.hike-card .hike-image i {
+.hike-card .hike-image {
   font-size: 28px;
   color: rgb(100, 100, 100);
   opacity: 0.8;
   -webkit-text-stroke: 1px white;
+}
+
+.hike-image-show{
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  height: 10rem;
+  width: 100%;
 }
 
 .hike-card .hike-info p {

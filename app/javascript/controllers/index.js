@@ -10,5 +10,8 @@ application.register("favorites", FavoritesController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MapController from "./map_controller"
+application.register("map", MapController)
+
 import SearchHikesController from "./search_hikes_controller"
 application.register("search-hikes", SearchHikesController)
