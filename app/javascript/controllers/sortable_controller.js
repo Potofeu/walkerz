@@ -7,6 +7,9 @@ export default class extends Controller {
     Sortable.create(this.element, {
       ghostClass: "ghost",
       animation: 150,
+      onEnd: Array.from(this.element.children).forEach(div => {
+        console.log(div.newIndex)
+      })
     })
   }
 }

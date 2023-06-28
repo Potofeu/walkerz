@@ -8,11 +8,15 @@
    %>
   <%= f.button :submit, "+", class: "new-location-button" %>
 <% end %>
-<div data-controller="sortable">
-  <% @hike.locations.each do |location| %>
-    <div class="location-tag">
-      <i class="fa-solid fa-bars"></i>
-      <p><%= location.name %></p>
-    </div>
-  <% end %>
+<div data-controller="update-poi-step">
+  <div data-controller="sortable" data-update-poi-step-target="list">
+    <% @hike.locations.each do |location| %>
+      <div class="location-tag">
+        <i class="fa-solid fa-bars"></i>
+        <p><%= location.name %></p>
+        <p class="d-none" id="id"><%= location.id %></p>
+      </div>
+    <% end %>
+  </div>
+  <button data-action="click->update-poi-step#update">Valider</button>
 </div>

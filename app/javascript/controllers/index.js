@@ -15,3 +15,6 @@ application.register("search-hikes", SearchHikesController)
 
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
+
+import UpdatePoiStepController from "./update_poi_step_controller"
+application.register("update-poi-step", UpdatePoiStepController)
