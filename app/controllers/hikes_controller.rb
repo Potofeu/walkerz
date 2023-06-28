@@ -42,6 +42,6 @@ class HikesController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: { location: location })
       }
     end
-    @points = @hike.points_of_interests
+    @points = @hike.points_of_interests.order(step: :asc)
   end
 end
