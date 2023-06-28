@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :set_hike, only: %i[new create]
+  before_action :set_hike, only: [:new, :create]
 
   def new
     @favorite = Favorite.new
