@@ -38,8 +38,10 @@ class HikesController < ApplicationController
     @markers = @hike.locations.geocoded.map do |location|
       {
         lat: location.latitude,
-        lng: location.longitude
+        lng: location.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { location: location })
       }
     end
+    @points = @hike.points_of_interests
   end
 end
