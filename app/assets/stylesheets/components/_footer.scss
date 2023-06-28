@@ -22,7 +22,7 @@
   }
 
   img {
-    width: 90px;
+    width: 80px;
     vertical-align: top;
 
     &:hover {
@@ -41,6 +41,12 @@
     font-size: 20px;
     color: $orange;
   }
+}
+
+.footer-item a:hover {
+    cursor: pointer;
+    font-size: 20px;
+    color: $orange;
 }
 
 .footer .dropup {
