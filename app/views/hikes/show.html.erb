@@ -32,10 +32,13 @@
         <div class="row-gap-3">
           <select class="form-select" aria-label="Choisissez une étape">
             <option selected>Sélectionnez une étape</option>
-            <%= @points.each do |point| %>
-             <option value="<%= point.step %>">Etape <%= point.step %></option>
+            <% @points.each do |point| %>
+             <option value="<%= point.step %>" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom<%= point.step %>">Etape <%= point.step %></option>
             <% end %>
           </select>
+           <% @points.each do |point| %>
+	            <%= render 'offcanvas_etape', point: point %>
+          <% end %>
         </div>
         <div class="map-show mt-2" style="width: 100%; height:350px;"
           data-controller="map"
