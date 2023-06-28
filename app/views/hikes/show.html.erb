@@ -1,38 +1,50 @@
 <div class="container pale-background py-3">
   <div class="row-fluid">
-    <h1><%= @hike.name %></h1>
-    <div class="hike-card">
-      <%= cl_image_tag @hike.locations.first.photo.key, class: "hike-image-show" %>
+
+    <div class="card-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @hike.locations.first.photo.key %>)">
+        <h1><%= @hike.name %></h1>
+    </div>
+    <div class="card-show-actions">
+          <div class="card-txt">
+            <h6>Distance</h6>
+            <p><%= @hike.distance %></p>
+          </div>
+          <div class="card-txt">
+            <h6>Durée</h6>
+              <p><%= @hike.time %></p>
+          </div>
+          <div class="card-txt">
+            <h6>Note</h6>
+            <p>
+              <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
+            </p>
+
+          </div>
+          <div class="card-txt">
+            <h6>Metéo</h6>
+            <p>
+              <i class="fa-solid fa-cloud"></i>
+            </p>
+          </div>
     </div>
     <div class="row-fluid">
-      <div class="list-group flex-row gap-2">
-        <div class="list-group-hike d-flex justify-content-center gap-1 py-1">
-          <div class="d-flex gap-2 w-100 justify-content-between">
-            <div>
-              <h6>Distance</h6>
-              <p><%= @hike.distance %></p>
-            </div>
-          </div>
+        <p class="mt-4"><%= @hike.description %></p>
+        <div class="row-gap-3">
+          <select class="form-select" aria-label="Choisissez une étape">
+            <option selected>Sélectionnez une étape</option>
+            <% @points.each do |point| %>
+             <option value="<%= point.step %>" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom<%= point.step %>">Etape <%= point.step %></option>
+            <% end %>
+          </select>
+           <% @points.each do |point| %>
+	            <%= render 'offcanvas_etape', point: point %>
+          <% end %>
         </div>
-        <div class="list-group-hike d-flex justify-content-center gap-1 py-1">
-          <div class="d-flex gap-2 w-100 justify-content-between">
-            <div>
-              <h6>Temps</h6>
-              <p><%= @hike.time %></p>
-            </div>
-          </div>
+        <div class="map-show mt-2" style="width: 100%; height:350px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
-      </div>
-      <div>
-        <p><%= @hike.description %></p>
-      </div>
-      <div style="width: 100%; height: 600px;"
-		  data-controller="map"
-		  data-map-markers-value="<%= @markers.to_json %>"
-		  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        <h2>Circuits</h2>
-
-      </div>
     </div>
   </div>
 </div>

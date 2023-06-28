@@ -15,6 +15,7 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
+
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
     this.#traceRoute();
@@ -22,15 +23,28 @@ export default class extends Controller {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-    new mapboxgl.Marker()
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
+      // Create a HTML element for your custom marker
+      const customMarker = document.createElement("div");
+      customMarker.className = "customMarker"; // Utilise la classe customMarker
+      // customMarker.innerHTML = marker.marker_html;
+      new mapboxgl.Marker({ element: customMarker })
       .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup)
       .addTo(this.map)
     })
   }
+
   #fitMapToMarkers() {
-    const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 20, duration: 0 })
+    const bounds = new mapboxgl.LngLatBounds();
+    this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+    // ajustement de la quantité d'espace nécessaire autour des itinéraires
+    const padding = { top: 50, bottom: 50, left: 50, right: 50 };
+    // On limite le niveau de zoom maximal
+    // et on supprime l'animation d'ajustement de la carte avec duration 0
+    const options = { padding, maxZoom: 15, duration: 0 };
+
+    this.map.fitBounds(bounds, options);
   }
 
   #traceRoute() {

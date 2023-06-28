@@ -12,8 +12,4 @@ class HikePolicy < ApplicationPolicy
       true
     end
   end
-
-  def show?
-    true
-  end
 end
