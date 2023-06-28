@@ -34,10 +34,17 @@ export default class extends Controller {
       .addTo(this.map)
     })
   }
+
   #fitMapToMarkers() {
-    const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 20, duration: 0 })
+    const bounds = new mapboxgl.LngLatBounds();
+    this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+    // ajustement de la quantité d'espace nécessaire autour des itinéraires
+    const padding = { top: 50, bottom: 50, left: 50, right: 50 };
+    // On limite le niveau de zoom maximal
+    // et on supprime l'animation d'ajustement de la carte avec duration 0
+    const options = { padding, maxZoom: 15, duration: 0 };
+
+    this.map.fitBounds(bounds, options);
   }
 
   #traceRoute() {
