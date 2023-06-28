@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   resources :hikes do
     resources :favorites, only: [:new, :create]
+    resources :reviews, only: :create
   end
+
+  resources :reviews, only: :destroy
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

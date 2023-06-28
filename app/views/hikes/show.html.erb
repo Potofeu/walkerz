@@ -2,7 +2,7 @@
   <div class="row-fluid">
 
     <div class="card-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @hike.locations.first.photo.key %>)">
-        <h1><%= @hike.name %></h1>
+        <h1 id="top"><%= @hike.name %></h1>
     </div>
     <div class="card-show-actions">
           <div class="card-txt">
@@ -45,6 +45,53 @@
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
+    </div>
+  </div>
+  <div class="row justify-content-evenly mb-5">
+    <div class="col-8 text-center">
+      <% if @hike.reviews.count <= 1 %>
+        <h2 class="text-center">(<%= @hike.reviews.count%>) Commentaire</h2>
+      <% else %>
+        <h2 class="text-center">(<%= @hike.reviews.count%>) Commentaires</h2>
+      <% end %>
+    </div>
+    <div class="col-4 text-center">
+      <a href="#form"><i class="fa-solid fa-circle-plus"></i> Ajouter</a>
+    </div>
+    <hr>
+    <div class="col-12">
+      <% @hike.reviews.each do |review| %>
+        <div class="py-1">
+          Note: <% review.rating.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <p class="my-1"><%= review.content %></p>
+          <div class="d-flex justify-content-between">
+            <div class="col-6 text-center">
+              <p class="my-1"><%= review.user.first_name %></p>
+            </div>
+            <div class="col-6 text-center">
+              <% if review.user == current_user %>
+                <%= link_to review_path(review), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr de supprimer votre commentaire?"} do %>
+                  <i class="fa-sharp fa-solid fa-circle-xmark"></i> Enlever
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <hr>
+      <% end %>
+      <div>
+        <h3 class="text-center">Ajouter un commentaire</h3>
+        <%= simple_form_for [@hike, @review] do |f| %>
+          <%= f.input :content, label: "Commentaire" %>
+          <%= f.input :rating, as: :select, collection: (1..5), required: true, label: "Donnez une note" %>
+        <%= f.submit "Ajouter", class:"btn btn-orange" %>
+      <% end %>
+        <div id="form">
+          <p><a href="#top">Revenir tout en haut</a></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

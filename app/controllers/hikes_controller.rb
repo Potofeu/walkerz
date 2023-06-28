@@ -28,6 +28,7 @@ class HikesController < ApplicationController
 
   def show
     authorize @hike
+    @review = Review.new(hike: @hike)
   end
 
   private
