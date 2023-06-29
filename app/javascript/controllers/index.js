@@ -15,6 +15,3 @@ application.register("map", MapController)
 
 import SearchHikesController from "./search_hikes_controller"
 application.register("search-hikes", SearchHikesController)
-
-import SelectPopupController from "./select_popup_controller"
-application.register("select-popup", SelectPopupController)

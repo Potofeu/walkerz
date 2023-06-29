@@ -27,6 +27,7 @@ class HikesController < ApplicationController
 
   def show
     authorize @hike
+    @points = @hike.points_of_interests.order(step: :asc)
   end
 
   private
@@ -39,7 +40,7 @@ class HikesController < ApplicationController
       {
         lat: location.latitude,
         lng: location.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: { location: location })
+        marker_html: render_to_string(partial: "marker")
       }
     end
     @points = @hike.points_of_interests.order(step: :asc)
