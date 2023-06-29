@@ -30,6 +30,7 @@
     <div class="row-fluid">
         <p class="mt-4"><%= @hike.description %></p>
         <div class="row-gap-3">
+          <p class="mb-0">Les points d 'intérêts : </p>
           <select class="form-select" aria-label="Choisissez une étape">
             <option selected>Sélectionnez une étape</option>
             <% @points.each do |point| %>
