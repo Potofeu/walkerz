@@ -5,12 +5,19 @@
 }
 
 .hike-card {
-  text-decoration: none;
-  color: $dark-blue;
+  position: relative;
+  z-index: 0;
 
-  &:hover {
+  a {
     text-decoration: none;
     color: $dark-blue;
+  }
+
+  .favorite-icon {
+    position: absolute;
+    z-index: 1;
+    right: 1em;
+    top: 1em;
   }
 }
 
@@ -25,13 +32,6 @@
   box-shadow: 0 2px 2px rgba(0,0,0,0.2);
   }
 
-.hike-card .hike-image {
-  font-size: 28px;
-  color: rgb(100, 100, 100);
-  opacity: 0.8;
-  -webkit-text-stroke: 1px white;
-}
-
 .hike-image-show{
   border-radius: 10px;
   display: flex;
@@ -43,6 +43,20 @@
 .hike-card .hike-info p {
   margin: 0px;
   color: rgb(140, 140, 140);
+}
+
+#orange {
+  color: $orange;
+  opacity: 0.85;
+  font-size: 28px;
+  -webkit-text-stroke: 1px white;
+}
+
+#grey {
+  opacity: 0.70;
+  color: rgb(100, 100, 100);
+  font-size: 28px;
+  -webkit-text-stroke: 1px white;
 }
 
 .card-show{
