@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import FavoritesController from "./favorites_controller"
-application.register("favorites", FavoritesController)
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
@@ -15,6 +12,9 @@ application.register("map", MapController)
 
 import SearchHikesController from "./search_hikes_controller"
 application.register("search-hikes", SearchHikesController)
+
+import StarRatingController from "./star_rating_controller"
+application.register("star-rating", StarRatingController)
 
 import WeatherController from "./weather_controller"
 application.register("weather", WeatherController)

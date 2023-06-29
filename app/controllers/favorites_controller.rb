@@ -13,7 +13,11 @@ class FavoritesController < ApplicationController
     @favorite.hike = @hike
     @favorite.user = @user
     if @favorite.save
-      redirect_to favorites_path
+      if request.referrer.include?("favorites")
+        redirect_to favorites_path
+      else
+        redirect_to root_path
+      end
     else
       render root_path, status: :unprocessable_entity
     end
@@ -29,7 +33,11 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     authorize @favorite
     @favorite.destroy
-    redirect_to favorites_path, status: :see_other
+    if request.referrer.include?("favorites")
+      redirect_to favorites_path, status: :see_other
+    else
+      redirect_to root_path
+    end
   end
 
   private

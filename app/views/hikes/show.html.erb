@@ -7,16 +7,16 @@
     <div class="card-show-actions">
           <div class="card-txt">
             <h6>Distance</h6>
-            <p><%= @hike.distance %></p>
+            <p><%= @hike.distance %> km</p>
           </div>
           <div class="card-txt">
             <h6>Durée</h6>
-              <p><%= @hike.time %></p>
+              <p><%= @hike.time %> h</p>
           </div>
           <div class="card-txt">
             <h6>Note</h6>
             <p>
-              <i class="fas fa-star"></i> <%= @average %>
+              <i class="fas fa-star"></i> <%= @average.round(2) %>
             </p>
           </div>
           <div class="card-txt">
@@ -94,7 +94,7 @@
           <h3 class="text-center">Ajouter un commentaire</h3>
           <%= simple_form_for [@hike, @review] do |f| %>
             <%= f.input :content, label: "Commentaire" %>
-            <%= f.input :rating, as: :select, collection: (1..5), required: true, label: "Donnez une note" %>
+            <%= f.input :rating, as: :select, collection: (1..5).to_a, required: true, label: "Donnez une note", input_html: { data: { controller: "star-rating" } } %>
           <%= f.submit "Ajouter", class:"btn btn-orange" %>
         <% end %>
           <div id="form" class="my-1">
