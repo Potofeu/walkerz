@@ -32,7 +32,6 @@
         <div class="map-show mt-2" style="width: 100%; height:350px;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
-          data-map-points-value="<%= @points.map(&:step).to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           <% @hike.locations.each do |location| %>
 	            <%= render 'offcanvas_etape', location: location %>
