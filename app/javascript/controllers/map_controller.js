@@ -4,8 +4,7 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array,
-    points: Array
+    markers: Array
   }
   connect() {
     // console.log("Hello from map controller");
@@ -25,7 +24,6 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.marker_html);
-
       // Create a HTML element for your custom marker
       const customMarker = document.createElement("div");
       customMarker.innerHTML = marker.marker_html;

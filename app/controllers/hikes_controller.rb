@@ -40,9 +40,8 @@ class HikesController < ApplicationController
       {
         lat: location.latitude,
         lng: location.longitude,
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker", locals: {location: location})
       }
     end
-    @points = @hike.points_of_interests.order(step: :asc)
   end
 end
