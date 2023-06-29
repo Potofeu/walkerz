@@ -6,7 +6,7 @@ class PointsOfInterestPolicy < ApplicationPolicy
     # end
   end
 
-  def new?
+  def update?
     true
   end
 end

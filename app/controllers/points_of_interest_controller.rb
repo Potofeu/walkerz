@@ -1,10 +1,13 @@
 class PointsOfInterestController < ApplicationController
-  def new
-    @point_of_interest = PointsOfInterest.new
-    authorize @point_of_interest
-    @locations = Hike.order(name: :desc)
-    if params[:query].present?
-      @locations = locations.where('name ILIKE?', "%#{params[:query]}%")
-    end
+  def update
+    @poi = PointsOfInterest.find(params[:id])
+    authorize @poi
+    @poi = PointsOfInterest.update(poi_params)
+  end
+
+  private
+
+  def poi_params
+    params.require(:points_of_interest).permit(:step)
   end
 end

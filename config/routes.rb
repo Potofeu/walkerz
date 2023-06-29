@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :hikes do
     resources :locations, only: [:new, :create]
   end
+  resources :points_of_interest, only: [:update]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   # root "articles#index"

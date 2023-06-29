@@ -1,4 +1,4 @@
-<%= simple_form_for [@hike, @location] , html: { data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"], class: "d-flex"} } do |f|%>
+<%= simple_form_for [@hike, @location] , html: { data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: "d-flex" } do |f|%>
   <%= f.input :name,
     input_html: {data: {address_autocomplete_target: "name"}, class: "d-none"},
     wrapper_html: {data: {address_autocomplete_target: "wrapper"}}
@@ -10,11 +10,15 @@
 <% end %>
 <div data-controller="update-poi-step">
   <div data-controller="sortable" data-update-poi-step-target="list">
-    <% @hike.locations.each do |location| %>
+    <% @hike.points_of_interests.each do |poi| %>
       <div class="location-tag">
         <i class="fa-solid fa-bars"></i>
-        <p><%= location.name %></p>
-        <p class="d-none" id="id"><%= location.id %></p>
+        <p><%= poi.location.name %></p>
+        <%= simple_form_for poi do |f|%>
+          <%= f.input :step, input_html: { data: {u}} %>
+        <% end %>
+        <p class="d-none" id="id"><%= poi.location.id %></p>
+
       </div>
     <% end %>
   </div>
