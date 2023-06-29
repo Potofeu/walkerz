@@ -2,26 +2,25 @@
   <div class="row-fluid">
 
     <div class="card-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @hike.locations.first.photo.key %>)">
-        <h1><%= @hike.name %></h1>
+        <h1 id="top"><%= @hike.name %></h1>
     </div>
     <div class="card-show-actions">
           <div class="card-txt">
             <h6>Distance</h6>
-            <p><%= @hike.distance %></p>
+            <p><%= @hike.distance %> km</p>
           </div>
           <div class="card-txt">
             <h6>Durée</h6>
-              <p><%= @hike.time %></p>
+              <p><%= @hike.time %> h</p>
           </div>
           <div class="card-txt">
             <h6>Note</h6>
             <p>
-              <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
+              <i class="fas fa-star"></i> <%= @average.round(2) %>
             </p>
-
           </div>
           <div class="card-txt">
-            <h6>Metéo</h6>
+            <h6 data-controller="weather">Metéo</h6>
             <p>
               <i class="fa-solid fa-cloud"></i>
             </p>
@@ -39,6 +38,64 @@
 	            <%= render 'offcanvas_etape', location: location %>
           <% end %>
         </div>
+    </div>
+  </div>
+  <div class="row justify-content-evenly mb-5">
+    <div class="col-8 text-center">
+      <% if @hike.reviews.count <= 1 %>
+        <h2 class="text-center">(<%= @hike.reviews.count%>) Commentaire</h2>
+      <% else %>
+        <h2 class="text-center">(<%= @hike.reviews.count%>) Commentaires</h2>
+      <% end %>
+    </div>
+    <div class="col-4 text-center">
+      <%= link_to hike_path(anchor: 'form'), class: "btn btn-blue" do %>
+        <i class="fa-sharp fa-solid fa-download"></i> Ajouter
+      <% end %>
+    </div>
+    <hr>
+    <div class="col-12">
+      <% @hike.reviews.each do |review| %>
+        <div class="comment py-1">
+          <div class="d-flex justify-content-between">
+            <div class="col-6 text-left">
+              <% review.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            </div>
+            <div class="col-6 text-right">
+              <p id="date">Le: <%= review.created_at.strftime("%d-%m-%Y") %></p>
+            </div>
+          </div>
+          <p id="content"><%= review.content %></p>
+          <div class="d-flex justify-content-between">
+            <div class="col-6 text-center">
+              <p><%= review.user.first_name %></p>
+            </div>
+            <div class="col-6 text-center">
+              <% if review.user == current_user %>
+                <%= link_to review_path(review), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr de supprimer votre commentaire?"} do %>
+                  <i class="fa-sharp fa-solid fa-circle-xmark"></i> Supprimer
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <hr>
+      <% end %>
+      <div class="d-flex justify-content-center">
+        <div class="col-10">
+          <h3 class="text-center">Ajouter un commentaire</h3>
+          <%= simple_form_for [@hike, @review] do |f| %>
+            <%= f.input :content, label: "Commentaire" %>
+            <%= f.input :rating, as: :select, collection: (1..5).to_a, required: true, label: "Donnez une note", input_html: { data: { controller: "star-rating" } } %>
+          <%= f.submit "Ajouter", class:"btn btn-orange" %>
+        <% end %>
+          <div id="form" class="my-1">
+            <%= link_to "Revenir tout en haut", hike_path(anchor: 'top'), class: "btn btn-blue" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

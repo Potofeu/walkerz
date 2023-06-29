@@ -3,6 +3,7 @@ class HikesController < ApplicationController
 
   def index
     @hikes = policy_scope(Hike)
+    @user = current_user
     @categories = Category.all
     if params[:latitude].present? && params[:longitude].present?
       latitude = params[:latitude].to_f
@@ -27,7 +28,14 @@ class HikesController < ApplicationController
 
   def show
     authorize @hike
-    @points = @hike.points_of_interests.order(step: :asc)
+
+    @review = Review.new(hike: @hike)
+    @sum = 0
+    @hike.reviews.each do |review|
+      @sum += review.rating
+    end
+    @average = @sum / @hike.reviews.size.to_f
+
   end
 
   private

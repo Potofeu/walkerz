@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :set_hike, only: %i[new create]
+  before_action :set_hike, only: [:new, :create]
 
   def new
     @favorite = Favorite.new
@@ -13,7 +13,11 @@ class FavoritesController < ApplicationController
     @favorite.hike = @hike
     @favorite.user = @user
     if @favorite.save
-      redirect_to favorites_path
+      if request.referrer.include?("favorites")
+        redirect_to favorites_path
+      else
+        redirect_to root_path
+      end
     else
       render root_path, status: :unprocessable_entity
     end
@@ -23,6 +27,17 @@ class FavoritesController < ApplicationController
     @favorites = policy_scope(Favorite)
     @user = current_user
     @favorites = @user.favorites
+  end
+
+  def destroy
+    @favorite = Favorite.find(params[:id])
+    authorize @favorite
+    @favorite.destroy
+    if request.referrer.include?("favorites")
+      redirect_to favorites_path, status: :see_other
+    else
+      redirect_to root_path
+    end
   end
 
   private

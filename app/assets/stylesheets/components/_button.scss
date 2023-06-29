@@ -2,9 +2,9 @@
   background: $orange;
   color: $pale-pink;
   position:relative;
-  height: 32px;
+  height: 28px;
   font-size: 14px;
-  padding: 4px 8px;
+  padding: 4px 6px;
   cursor: pointer;
   transition:0.15s ease all;
   border-radius: 12px;
@@ -25,13 +25,12 @@
   background: $dark-blue;
   color: $pale-pink;
   position: relative;
-  height: 32px;
+  height: 28px;
   font-size: 14px;
-  padding: 4px 12px;
+  padding: 4px 6px;
   cursor: pointer;
   transition: 0.15s ease all;
   border-radius: 12px;
-  margin-bottom: 12px;
 }
 
 .btn-blue:hover {

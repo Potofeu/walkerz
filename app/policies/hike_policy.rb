@@ -11,7 +11,6 @@ class HikePolicy < ApplicationPolicy
     def index?
       true
     end
-
   end
 
   def show?
