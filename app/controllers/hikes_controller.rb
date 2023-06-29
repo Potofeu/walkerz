@@ -3,6 +3,7 @@ class HikesController < ApplicationController
 
   def index
     @hikes = policy_scope(Hike)
+    @user = current_user
     @categories = Category.all
     if params[:latitude].present? && params[:longitude].present?
       latitude = params[:latitude].to_f
@@ -27,6 +28,12 @@ class HikesController < ApplicationController
 
   def show
     authorize @hike
+    @review = Review.new(hike: @hike)
+    @sum = 0
+    @hike.reviews.each do |review|
+      @sum += review.rating
+    end
+    @average = @sum / @hike.reviews.size.to_f
   end
 
   private
@@ -38,8 +45,10 @@ class HikesController < ApplicationController
     @markers = @hike.locations.geocoded.map do |location|
       {
         lat: location.latitude,
-        lng: location.longitude
+        lng: location.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { location: location })
       }
     end
+    @points = @hike.points_of_interests.order(step: :asc)
   end
 end

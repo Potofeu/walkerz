@@ -1,0 +1,32 @@
+.comment {
+  background-color: rgb(240, 240, 240);
+  padding: 8px;
+  border-radius: 8px;
+
+  p {
+    margin-bottom: 0px;
+  }
+
+  a {
+    text-decoration: none;
+    color: $orange;
+    font-size: 12px;
+  }
+}
+
+#content {
+  font-style: italic;
+  padding-top: 4px;
+  padding-bottom: 4px
+}
+#date {
+  font-size: 12px;
+}
+
+.fa-circle-xmark {
+  color: $orange;
+}
+
+.fa-star {
+  color: $orange;
+  }

@@ -18,4 +18,8 @@ class Hike < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+  def user_favorite(user)
+    favorites.find_by(user: user)
+  end
 end
