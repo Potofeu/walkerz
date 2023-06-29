@@ -29,6 +29,11 @@ class HikesController < ApplicationController
   def show
     authorize @hike
     @review = Review.new(hike: @hike)
+    @sum = 0
+    @hike.reviews.each do |review|
+      @sum += review.rating
+    end
+    @average = @sum / @hike.reviews.size.to_f
   end
 
   private

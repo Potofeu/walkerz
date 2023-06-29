@@ -16,12 +16,11 @@
           <div class="card-txt">
             <h6>Note</h6>
             <p>
-              <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
+              <i class="fas fa-star"></i> <%= @average %>
             </p>
-
           </div>
           <div class="card-txt">
-            <h6>Metéo</h6>
+            <h6 data-controller="weather">Metéo</h6>
             <p>
               <i class="fa-solid fa-cloud"></i>
             </p>
@@ -56,24 +55,33 @@
       <% end %>
     </div>
     <div class="col-4 text-center">
-      <a href="#form"><i class="fa-solid fa-circle-plus"></i> Ajouter</a>
+      <%= link_to hike_path(anchor: 'form'), class: "btn btn-blue" do %>
+        <i class="fa-sharp fa-solid fa-download"></i> Ajouter
+      <% end %>
     </div>
     <hr>
     <div class="col-12">
       <% @hike.reviews.each do |review| %>
-        <div class="py-1">
-          Note: <% review.rating.times do %>
-            <i class="fas fa-star"></i>
-          <% end %>
-          <p class="my-1"><%= review.content %></p>
+        <div class="comment py-1">
+          <div class="d-flex justify-content-between">
+            <div class="col-6 text-left">
+              <% review.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            </div>
+            <div class="col-6 text-right">
+              <p id="date">Le: <%= review.created_at.strftime("%d-%m-%Y") %></p>
+            </div>
+          </div>
+          <p id="content"><%= review.content %></p>
           <div class="d-flex justify-content-between">
             <div class="col-6 text-center">
-              <p class="my-1"><%= review.user.first_name %></p>
+              <p><%= review.user.first_name %></p>
             </div>
             <div class="col-6 text-center">
               <% if review.user == current_user %>
                 <%= link_to review_path(review), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr de supprimer votre commentaire?"} do %>
-                  <i class="fa-sharp fa-solid fa-circle-xmark"></i> Enlever
+                  <i class="fa-sharp fa-solid fa-circle-xmark"></i> Supprimer
                 <% end %>
               <% end %>
             </div>
@@ -81,15 +89,17 @@
         </div>
       <hr>
       <% end %>
-      <div>
-        <h3 class="text-center">Ajouter un commentaire</h3>
-        <%= simple_form_for [@hike, @review] do |f| %>
-          <%= f.input :content, label: "Commentaire" %>
-          <%= f.input :rating, as: :select, collection: (1..5), required: true, label: "Donnez une note" %>
-        <%= f.submit "Ajouter", class:"btn btn-orange" %>
-      <% end %>
-        <div id="form">
-          <p><a href="#top">Revenir tout en haut</a></p>
+      <div class="d-flex justify-content-center">
+        <div class="col-10">
+          <h3 class="text-center">Ajouter un commentaire</h3>
+          <%= simple_form_for [@hike, @review] do |f| %>
+            <%= f.input :content, label: "Commentaire" %>
+            <%= f.input :rating, as: :select, collection: (1..5), required: true, label: "Donnez une note" %>
+          <%= f.submit "Ajouter", class:"btn btn-orange" %>
+        <% end %>
+          <div id="form" class="my-1">
+            <%= link_to "Revenir tout en haut", hike_path(anchor: 'top'), class: "btn btn-blue" %>
+          </div>
         </div>
       </div>
     </div>
