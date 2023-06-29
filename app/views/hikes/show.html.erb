@@ -28,22 +28,15 @@
     </div>
     <div class="row-fluid">
         <p class="mt-4"><%= @hike.description %></p>
-        <div class="row-gap-3">
-          <p class="mb-0">Les points d 'intérêts : </p>
-          <select class="form-select" aria-label="Choisissez une étape">
-            <option selected>Sélectionnez une étape</option>
-            <% @points.each do |point| %>
-             <option value="<%= point.step %>" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom<%= point.step %>">Etape <%= point.step %></option>
-            <% end %>
-          </select>
-           <% @points.each do |point| %>
-	            <%= render 'offcanvas_etape', point: point %>
-          <% end %>
-        </div>
+
         <div class="map-show mt-2" style="width: 100%; height:350px;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
+          data-map-points-value="<%= @points.map(&:step).to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          <% @hike.locations.each do |location| %>
+	            <%= render 'offcanvas_etape', location: location %>
+          <% end %>
         </div>
     </div>
   </div>

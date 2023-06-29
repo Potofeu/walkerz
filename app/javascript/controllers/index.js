@@ -18,3 +18,4 @@ application.register("star-rating", StarRatingController)
 
 import WeatherController from "./weather_controller"
 application.register("weather", WeatherController)
+
