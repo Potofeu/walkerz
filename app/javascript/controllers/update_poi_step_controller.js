@@ -34,7 +34,7 @@ export default class extends Controller {
   }
 
   navigateToHike () {
-    const newUrl = `http://localhost:3000/hikes/${this.hikeTarget.innerText}`
+    const newUrl = `https://walkerz-1174-8e6b7b77f2ee.herokuapp.com/hikes/${this.hikeTarget.innerText}`
     window.location = newUrl;
   }
 }
