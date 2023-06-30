@@ -35,8 +35,6 @@ class HikesController < ApplicationController
   def create
     @hike = Hike.new(hike_params)
     @hike.creator = current_user
-    @hike.time = 0
-    @hike.distance = 0
     authorize @hike
     if @hike.save!
       @hike_categories = params[:hike][:category_ids]
