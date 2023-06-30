@@ -2,12 +2,17 @@
   background: $orange;
   color: $pale-pink;
   position:relative;
-  height: 32px;
-  font-size: 16px;
-  padding: 4px 8px;
+  height: 28px;
+  font-size: 14px;
+  padding: 4px 6px;
   cursor: pointer;
   transition:0.15s ease all;
   border-radius: 12px;
+}
+
+.btn-orange a{
+  text-decoration: none;
+  color: white;
 }
 
 .btn-orange:hover {
@@ -20,13 +25,12 @@
   background: $dark-blue;
   color: $pale-pink;
   position: relative;
-  height: 32px;
-  font-size: 16px;
-  padding: 4px 12px;
+  height: 28px;
+  font-size: 14px;
+  padding: 4px 6px;
   cursor: pointer;
   transition: 0.15s ease all;
   border-radius: 12px;
-  margin-bottom: 12px;
 }
 
 .btn-blue:hover {

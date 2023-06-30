@@ -1,13 +1,34 @@
 
-  <div class="py-3"data-search-hikes-target="list">
+  <div class="py-2"data-search-hikes-target="list">
     <h1>Liste des circuits</h1>
     <div class="row">
       <div class="col-12">
+        <div class="hikes-cards" data-controller="favorites">
           <% @hikes.each do |hike| %>
             <div class="py-2">
-              <strong><%= hike.name %></strong>
-              <br>Description: <%= hike.description %>
-              <br>Durée: <%= hike.time %>
+              <div class="hike-card">
+                <% favorite = hike.user_favorite(current_user) %>
+                  <% if favorite %>
+                    <%= link_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr de supprimer ce circuit?"}, class: "favorite-icon" do %>
+                      <i class="fa-solid fa-bookmark" id="orange"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to hike_favorites_path(hike), data: { turbo_method: :post }, class: "favorite-icon" do %>
+                      <i class="fa-solid fa-bookmark" id="grey"></i>
+                    <% end %>
+                  <% end %>
+                <%= link_to hike_path(hike) do %>
+                  <div class="hike-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path hike.locations.first.photo.key %>')">
+                  </div>
+                  <div class="hike-description pt-1">
+                    <div class="hike-info">
+                      <strong><%= hike.name.capitalize %></strong>
+                      <br>Description: <%= hike.description.truncate(28) %>
+                      <br><i class="fa-solid fa-shoe-prints"></i> Durée: <%= hike.time %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
             </div>
           <% end %>
       </div>

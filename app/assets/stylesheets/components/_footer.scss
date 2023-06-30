@@ -6,6 +6,7 @@
   width: 100%;
   border-top: 1px solid $orange;
   font-size: 24px;
+  margin-bottom: auto;
 
   h6 {
   margin-top: 2px;
@@ -22,8 +23,12 @@
   }
 
   img {
-    width: 90px;
+    width: 80px;
     vertical-align: top;
+
+    &:hover {
+      width: 80px;
+    }
   }
 
 }
@@ -31,4 +36,51 @@
 .footer-item {
   text-align: center;
   padding-top: 7px;
+
+  &:hover {
+    cursor: pointer;
+    font-size: 20px;
+    color: $orange;
+  }
+}
+
+.footer-item a:hover {
+    cursor: pointer;
+    font-size: 20px;
+    color: $orange;
+}
+
+.footer .dropup {
+  padding-top: 7px;
+  align-items: center;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+    font-size: 20px;
+    color: $orange;
+  }
+}
+
+.footer .dropdown-menu {
+  background-color: $dark-blue;
+  color: white;
+}
+
+.footer .dropdown-item {
+
+  &:hover {
+    background-color: $light-orange;
+    color: white;
+    font-size: 14px;
+  }
+}
+
+.nav-user{
+  display: block;
+  width: 100%;
+  padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+  font-weight: 400;
+  color: white;
+  text-align: inherit;
 }
