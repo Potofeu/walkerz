@@ -1,31 +1,35 @@
-<%= simple_form_for [@hike, @location] , html: { data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: "d-flex" } do |f|%>
-  <%= f.input :name,
-    input_html: {data: {address_autocomplete_target: "name"}, class: "d-none"},
-    wrapper_html: {data: {address_autocomplete_target: "wrapper"}}
-   %>
-  <%= f.input :address,
-    input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}
-   %>
-  <%= f.button :submit, "+", class: "new-location-button" %>
-<% end %>
-<div data-controller="update-poi-step">
-  <div data-controller="sortable" data-update-poi-step-target="list">
-    <% @hike.points_of_interests.each do |poi| %>
-      <div class="location-tag">
-        <i class="fa-solid fa-bars"></i>
-        <p><%= poi.location.name %></p>
-        <%= simple_form_for poi, html: { data: {update_poi_step_target: "form"}, class: "d-none"} do |f|%>
-          <%= f.input :step, input_html: { data: {update_poi_step_target: "input"} } %>
-        <% end %>
-        <p class="d-none" data-update-poi-step-target="long"><%= poi.location.longitude %></p>
-        <p class="d-none" data-update-poi-step-target="lat"><%= poi.location.latitude %></p>
-      </div>
-    <% end %>
-  </div>
-  <% if @hike.points_of_interests %>
-    <button class="mb-5" data-action="click->update-poi-step#update">Valider</button>
-  <% else %>
-    <button class="d-none" data-action="click->update-poi-step#update">Valider</button>
+<div class="container">
+  <h2>Ajouter une étape</h2>
+  <%= simple_form_for [@hike, @location] , html: { data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: "d-flex align-items-center" } do |f|%>
+    <%= f.input :name,
+      input_html: {data: {address_autocomplete_target: "name"}, class: "d-none"},
+      wrapper_html: {data: {address_autocomplete_target: "wrapper"}}, label: false
+    %>
+    <%= f.input :address,
+      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}, label: false
+    %>
+    <%= f.button :submit, "+", class: "new-location-button" %>
   <% end %>
-  <p data-update-poi-step-target="hike"><%= @hike.id %></p>
+  <h2>Mes étapes:</h2>
+  <div data-controller="update-poi-step" class>
+    <div data-controller="sortable" data-update-poi-step-target="list">
+      <% @hike.points_of_interests.each do |poi| %>
+        <div class="location-tag">
+          <i class="fa-solid fa-bars"></i>
+          <p><%= poi.location.name %></p>
+          <%= simple_form_for poi, html: { data: {update_poi_step_target: "form"}, class: "d-none"} do |f|%>
+            <%= f.input :step, input_html: { data: {update_poi_step_target: "input"} } %>
+          <% end %>
+          <p class="d-none" data-update-poi-step-target="long"><%= poi.location.longitude %></p>
+          <p class="d-none" data-update-poi-step-target="lat"><%= poi.location.latitude %></p>
+        </div>
+      <% end %>
+    </div>
+    <% if @hike.points_of_interests %>
+      <button class="my-5 mx-auto btn btn-orange" data-action="click->update-poi-step#update">Valider mes étapes</button>
+    <% else %>
+      <button class="d-none" data-action="click->update-poi-step#update">Valider</button>
+    <% end %>
+    <p class ="d-none" data-update-poi-step-target="hike"><%= @hike.id %></p>
+  </div>
 </div>
