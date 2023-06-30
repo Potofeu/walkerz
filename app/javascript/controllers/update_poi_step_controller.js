@@ -2,14 +2,12 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="update-poi-step"
 export default class extends Controller {
-  static targets = ["list", "id", "input", "form"]
-  connect() {
-    console.log("Hello fromn update controlller")
-  }
+  static targets = ["list", "id", "input", "form", "long", "lat", "hike"]
 
   update() {
     this.fillSteps()
     this.fetchAction()
+    this.navigateToHike()
   }
 
   fillSteps() {
@@ -33,5 +31,10 @@ export default class extends Controller {
         console.log(`${data} /// ${Math.random()}`)
       })
     })
+  }
+
+  navigateToHike () {
+    const newUrl = `http://localhost:3000/hikes/${this.hikeTarget.innerText}`
+    window.location = newUrl;
   }
 }
