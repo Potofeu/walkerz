@@ -16,7 +16,11 @@
           <div class="card-txt">
             <h6>Note</h6>
             <p>
+            <% if @average.nan? %>
+              <i class="fas fa-star"></i>
+            <% else %>
               <i class="fas fa-star"></i> <%= @average.round(2) %>
+            <% end %>
             </p>
           </div>
           <div class="card-txt">

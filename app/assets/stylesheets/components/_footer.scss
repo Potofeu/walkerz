@@ -1,8 +1,11 @@
 .footer {
   position: fixed;
+  z-index: 10000;
   height: 6rem;
+  max-height: 85px;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
   border-top: 1px solid $orange;
   font-size: 24px;
