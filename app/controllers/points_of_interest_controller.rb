@@ -2,7 +2,9 @@ class PointsOfInterestController < ApplicationController
   def update
     @poi = PointsOfInterest.find(params[:id])
     authorize @poi
-    @poi = PointsOfInterest.update(poi_params)
+    @poi.update(poi_params)
+    @hike = Hike.find(@poi.hike_id)
+    redirect_to new_location_path(@hike)
   end
 
   private
