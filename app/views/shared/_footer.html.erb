@@ -7,8 +7,10 @@
             <h6>Explorer</h6>
         </div>
         <div class="footer-item">
-          <i class="fa-solid fa-circle-plus"></i>
-          <h6>Parcours</h6>
+          <%= link_to new_hike_path do %>
+            <i class="fa-solid fa-circle-plus"></i>
+            <h6>Parcours</h6>
+          <% end %>
         </div>
         <div class="">
           <%= link_to root_path do %>

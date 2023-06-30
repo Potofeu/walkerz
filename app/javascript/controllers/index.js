@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
@@ -13,9 +16,13 @@ application.register("map", MapController)
 import SearchHikesController from "./search_hikes_controller"
 application.register("search-hikes", SearchHikesController)
 
+import SortableController from "./sortable_controller"
+application.register("sortable", SortableController)
+
+import UpdatePoiStepController from "./update_poi_step_controller"
+application.register("update-poi-step", UpdatePoiStepController)
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
 
 import WeatherController from "./weather_controller"
 application.register("weather", WeatherController)
-
