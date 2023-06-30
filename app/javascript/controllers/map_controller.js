@@ -49,13 +49,24 @@ export default class extends Controller {
   #traceRoute() {
     const coordinates = this.markersValue.map(marker => [marker.lng, marker.lat]);
 
-    const directionsRequest = `https://api.mapbox.com/directions/v5/mapbox/walking/${coordinates.join(';')}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
+    const directionsRequest = `https://api.mapbox.com/directions/v5/mapbox/walking/${coordinates.join(';')}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}&language=fr`;
 
     fetch(directionsRequest)
       .then(response => response.json())
       .then(data => {
         const routeCoordinates = data.routes[0].geometry.coordinates;
-
+        // Partie ajout des instructions de guidage
+        const steps = data.routes[0].legs[0].steps; // On extrait les étapes de direction de l'API
+        const instructionsContainer = document.getElementById('directions-instructions');
+        // Efface le contenu précédent des instructions
+        instructionsContainer.innerHTML = '';
+        // Parcourt les étapes de direction et les ajoute à l'élément HTML des instructions
+        steps.forEach(step => {
+          const instruction = document.createElement('p');
+          const durationMinutes = Math.round(step.duration / 60); // Temps de trajet en minutes
+          instruction.textContent = `${step.maneuver.instruction} (${durationMinutes} minutes)`;
+          instructionsContainer.appendChild(instruction);
+        });
         this.map.on("load", () => {
           this.map.addSource("route", {
             type: "geojson",
