@@ -1,6 +1,6 @@
 require "test_helper"
 
-class PointsOfInterestTest < ActiveSupport::TestCase
+class LocationControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

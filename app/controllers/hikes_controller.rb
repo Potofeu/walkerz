@@ -26,6 +26,28 @@ class HikesController < ApplicationController
     end
   end
 
+  def new
+    @hike = Hike.new
+    @location = Location.new
+    authorize @hike
+  end
+
+  def create
+    @hike = Hike.new(hike_params)
+    @hike.creator = current_user
+    @hike.time = 0
+    @hike.distance = 0
+    authorize @hike
+    if @hike.save!
+      @hike_categories = params[:hike][:category_ids]
+      @hike_categories.each do |category|
+        HikesCategory.create(hike_id: @hike.id, category_id: category.to_i)
+      end
+      redirect_to new_hike_location_path(@hike)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
   def show
     authorize @hike
 
@@ -35,10 +57,13 @@ class HikesController < ApplicationController
       @sum += review.rating
     end
     @average = @sum / @hike.reviews.size.to_f
-
   end
 
   private
+
+  def hike_params
+    params.require(:hike).permit(:name, :description, :time, :distance, :city)
+  end
 
   def set_hike
     @hike = Hike.find(params[:id])
