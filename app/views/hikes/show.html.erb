@@ -24,10 +24,9 @@
             </p>
           </div>
           <div class="card-txt">
-            <h6 data-controller="weather">Metéo</h6>
-            <p>
-              <i class="fa-solid fa-cloud"></i>
-            </p>
+            <h6 data-controller="weather" value=<%= @hike.city %> >Metéo</h6>
+            <p data-target="icon"></p>
+            <p data-target="temperature"></p>
           </div>
     </div>
     <div class="row-fluid">
