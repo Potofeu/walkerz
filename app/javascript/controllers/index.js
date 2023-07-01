@@ -19,10 +19,14 @@ application.register("search-hikes", SearchHikesController)
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
 
-import UpdatePoiStepController from "./update_poi_step_controller"
-application.register("update-poi-step", UpdatePoiStepController)
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
+
+import TypedJsController from "./typed_js_controller"
+application.register("typed-js", TypedJsController)
+
+import UpdatePoiStepController from "./update_poi_step_controller"
+application.register("update-poi-step", UpdatePoiStepController)
 
 import WeatherController from "./weather_controller"
 application.register("weather", WeatherController)
