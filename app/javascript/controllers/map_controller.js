@@ -14,7 +14,7 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
-    })
+    });
 
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
@@ -35,6 +35,7 @@ export default class extends Controller {
   }
 
   #fitMapToMarkers() {
+
     const bounds = new mapboxgl.LngLatBounds();
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]));
     // ajustement de la quantité d'espace nécessaire autour des itinéraires
@@ -47,7 +48,9 @@ export default class extends Controller {
   }
 
   #traceRoute() {
+
     const coordinates = this.markersValue.map(marker => [marker.lng, marker.lat]);
+
 
     const directionsRequest = `https://api.mapbox.com/directions/v5/mapbox/walking/${coordinates.join(';')}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}&language=fr`;
 
@@ -57,16 +60,43 @@ export default class extends Controller {
         const routeCoordinates = data.routes[0].geometry.coordinates;
         // Partie ajout des instructions de guidage
         const steps = data.routes[0].legs[0].steps; // On extrait les étapes de direction de l'API
+
         const instructionsContainer = document.getElementById('directions-instructions');
         // Efface le contenu précédent des instructions
         instructionsContainer.innerHTML = '';
         // Parcourt les étapes de direction et les ajoute à l'élément HTML des instructions
+        // console.log(steps);
+
+        // console.log(steps.length);
+        // console.log("first",steps[0].geometry.coordinates[0]);
+        // console.log("first",steps[steps.length-1].geometry.coordinates[0]);
         steps.forEach(step => {
+          // console.log(end(step.geometry.coordinates));
           const instruction = document.createElement('p');
           const durationMinutes = Math.round(step.duration / 60); // Temps de trajet en minutes
           instruction.textContent = `${step.maneuver.instruction} (${durationMinutes} minutes)`;
           instructionsContainer.appendChild(instruction);
         });
+        // Pour afficher les élements de direction, de navigation sur la carte
+        const directions = new MapboxDirections({
+          accessToken: mapboxgl.accessToken,
+          unit: 'metric',
+          profile: 'mapbox/walking',
+          alternatives: false,
+          geometries: 'geojson',
+          language: "fr",
+          steps: true,
+          controls: { instructions: true },
+          flyTo: false
+        });
+
+        // Ajout de la navigation guidée dans la carte
+        this.map.addControl(directions, 'top-left');
+        // On fixe le point de départ
+        directions.setOrigin(steps[0].geometry.coordinates[0]);
+        // Le point de destination : directions.setDestination([data["longitude"], data["latitude"]]);
+        directions.setDestination(steps[steps.length-1].geometry.coordinates[0]);
+
         this.map.on("load", () => {
           this.map.addSource("route", {
             type: "geojson",
@@ -95,5 +125,8 @@ export default class extends Controller {
           });
         });
       });
+
+
   }
+
 }
