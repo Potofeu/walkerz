@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
+  static targets = ['btnNavigate', 'btnLocate']
   static values = {
     apiKey: String,
     markers: Array
@@ -61,22 +62,12 @@ export default class extends Controller {
         // Partie ajout des instructions de guidage
         const steps = data.routes[0].legs[0].steps; // On extrait les étapes de direction de l'API
 
-        const instructionsContainer = document.getElementById('directions-instructions');
-        // Efface le contenu précédent des instructions
-        instructionsContainer.innerHTML = '';
-        // Parcourt les étapes de direction et les ajoute à l'élément HTML des instructions
         // console.log(steps);
 
         // console.log(steps.length);
         // console.log("first",steps[0].geometry.coordinates[0]);
         // console.log("first",steps[steps.length-1].geometry.coordinates[0]);
-        steps.forEach(step => {
-          // console.log(end(step.geometry.coordinates));
-          const instruction = document.createElement('p');
-          const durationMinutes = Math.round(step.duration / 60); // Temps de trajet en minutes
-          instruction.textContent = `${step.maneuver.instruction} (${durationMinutes} minutes)`;
-          instructionsContainer.appendChild(instruction);
-        });
+
         // Pour afficher les élements de direction, de navigation sur la carte
         const directions = new MapboxDirections({
           accessToken: mapboxgl.accessToken,
@@ -125,8 +116,30 @@ export default class extends Controller {
           });
         });
       });
+  }
 
+  navigate(event){
+    event.preventDefault();
+    console.log("lien:", this.btnLocateTarget);
+    console.log("navigate");
+    // On récupère la map
+    const mapContainer = this.element;
+    console.log(mapContainer);
+    // Vérifie si la classe fullscreen est déjà présente sur la carte
+    const isFullscreen = mapContainer.classList.contains('fullscreen');
 
+    // Si la carte est déjà en plein écran, on supprime la classe
+    if (isFullscreen) {
+      mapContainer.classList.remove('fullscreen');
+      const directionsControl = document.querySelector('.directions-control.directions-control');
+      directionsControl.style.maxWidth = '100%';
+      this.btnNavigateTarget.style.left = '289px';
+
+    } else {
+      // Sinon, on ajoute la classe pour mettre la carte en plein écran
+      mapContainer.classList.add('fullscreen');
+      this.btnNavigateTarget.style.left = '303px';
+    }
   }
 
 }

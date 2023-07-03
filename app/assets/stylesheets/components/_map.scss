@@ -1,6 +1,7 @@
 .map-show{
   margin-bottom: 4em;
   display: block;
+  position: relative;
 }
 
 .mapboxgl-popup {
@@ -21,4 +22,42 @@
 
 .mapbox-directions-component{
   display: none ;
+}
+
+.button-container {
+  position: absolute;
+  top: 10px;
+  left: 289px;
+  z-index: 9999;
+}
+
+#btn_navigate{
+  border-radius: 12px;
+}
+
+#btn-locate{
+  margin-top: 1em;
+}
+
+.map-container {
+  position: relative;
+}
+
+.fullscreen {
+  position: fixed!important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  height: 100%!important;
+  width: auto!important;
+}
+.mapboxgl-canvas{
+  height: 100%!important;
+  width: auto!important;
+}
+.directions-control.directions-control {
+  width: 100%!important;
+  max-width: 96%!important;
 }
