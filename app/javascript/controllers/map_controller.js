@@ -135,11 +135,34 @@ export default class extends Controller {
       directionsControl.style.maxWidth = '100%';
       this.btnNavigateTarget.style.left = '289px';
 
+      // Réajuster la carte pour tenir compte de tous les marqueurs
+      this.#fitMapToMarkers();
+
     } else {
       // Sinon, on ajoute la classe pour mettre la carte en plein écran
       mapContainer.classList.add('fullscreen');
       this.btnNavigateTarget.style.left = '303px';
+
+      // Centrer la carte sur les marqueurs
+      this.map.fitBounds(this.#getBoundsFromMarkers());
     }
+  }
+
+  locate(event) {
+    event.preventDefault();
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.handlePosition.bind(this));
+    } else {
+      console.log("La géolocalisation n'est pas prise en charge par votre navigateur.");
+    }
+  }
+
+  handlePosition(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    console.log(longitude, latitude);
+
   }
 
 }
