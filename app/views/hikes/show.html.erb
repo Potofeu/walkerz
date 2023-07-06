@@ -48,11 +48,9 @@
                   <i class="fa-sharp fa-solid fa-location-crosshairs"></i>
                 <% end %>
               </div>
-
             <% @hike.locations.each do |location| %>
                 <%= render 'offcanvas_etape', location: location %>
             <% end %>
-
           </div>
           <div class="map-show fullscreen d-none" data-toggle-map-target="fullScreenMap">
               <div class="button-container" data-action= "click->toggle-map#midScreen" data-toggle-map-target="btnNavigate">
@@ -63,7 +61,6 @@
                   <i class="fa-sharp fa-solid fa-location-crosshairs"></i>
                 <% end %>
               </div>
-
             <% @hike.locations.each do |location| %>
                 <%= render 'offcanvas_etape', location: location %>
             <% end %>

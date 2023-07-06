@@ -24,21 +24,6 @@
   display: none ;
 }
 
-.button-container {
-  position: absolute;
-  top: 10px;
-  left: 289px;
-  z-index: 9999;
-}
-
-#btn_navigate{
-  border-radius: 12px;
-}
-
-#btn-locate{
-  margin-top: 1em;
-}
-
 .map-container {
   position: relative;
 }
@@ -53,10 +38,14 @@
   height: 100%!important;
   width: auto!important;
 }
+
 .mapboxgl-canvas{
   height: 100%!important;
   width: auto!important;
 }
+
+// Partie pour rendre moins large la div de la navigation guidée
+// Pour pouvoir mettre les deux btn à côté
 .directions-control.directions-control {
   width: 100%!important;
   max-width: 96%!important;
