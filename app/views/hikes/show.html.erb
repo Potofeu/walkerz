@@ -42,7 +42,7 @@
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
               <div class="button-container" data-action= "click->toggle-map#fullScreen" data-map-target="btnNavigate">
                 <%= button_tag(type: "submit", class: "btn btn-warning") do %>
-                  <i class="fa-solid fa-map-location-dot"></i>
+                  <i class="fa-solid fa-magnifying-glass-location"></i>
                 <% end %>
                 <%= button_tag(id: 'btn-locate', type: "submit", class: "btn btn-warning", data: { action: 'click->map#locate', map_target: "btnLocate" }) do %>
                   <i class="fa-sharp fa-solid fa-location-crosshairs"></i>
@@ -55,7 +55,7 @@
           <div class="map-show fullscreen d-none" data-toggle-map-target="fullScreenMap">
               <div class="button-container" data-action= "click->toggle-map#midScreen" data-toggle-map-target="btnNavigate">
                 <%= button_tag(type: "submit", class: "btn btn-warning") do %>
-                  <i class="fa-solid fa-map-location-dot"></i>
+                  <i class="fa-solid fa-magnifying-glass-location"></i>
                 <% end %>
                 <%= button_tag(id: 'btn-locate', type: "submit", class: "btn btn-warning", data: { action: 'click->toggle-map#locate', toggle_map_target: "btnLocate" }) do %>
                   <i class="fa-sharp fa-solid fa-location-crosshairs"></i>
