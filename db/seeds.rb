@@ -55,7 +55,7 @@ puts 'Creating locations...'
 location_names = ["The french bastards - Oberkampf", "Place de la Bastille", "Jardin des Plantes", "Les Catacombes de Paris", "Chez Bébert"]
 location_address = ["61 Rue Oberkampf, 75011 Paris", "Place de la Bastille, 75004 Paris", "57 Rue Cuvier, 75005 Paris", "1 Av. du Colonel Henri Rol-Tanguy, 75014 Paris", "71 Bd du Montparnasse, 75006 Paris"]
 images = ["db/images/The-French-Bastards-Bakery-pastry-shop-Paris-France-12.jpg", "db/images/place de la bastille.jpg", "db/images/604143-le-jardin-des-plantes.jpg", "db/images/PARIS-Catacombes-de-Paris.jpg", "db/images/chez-bebert-montparnasse-facade.jpg"]
-(0..4). each do |number|
+(0..4).each do |number|
   location = Location.new(
     name: location_names[number],
     description: Faker::Quotes::Shakespeare.hamlet_quote,

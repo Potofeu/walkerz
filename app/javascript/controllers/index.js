@@ -22,6 +22,9 @@ application.register("sortable", SortableController)
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
 
+import ToggleMapController from "./toggle_map_controller"
+application.register("toggle-map", ToggleMapController)
+
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
 
