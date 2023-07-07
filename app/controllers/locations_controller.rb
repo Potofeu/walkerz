@@ -12,7 +12,6 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(location_params)
-    @location.photo.attach(io: File.open("db/images/Hiking_to_the_Ice_Lakes._San_Juan_National_Forest,_Colorado.jpg"), filename: "#{@location.name}.jpg")
     @hike = Hike.find(params[:hike_id])
     authorize @location
 
@@ -44,7 +43,7 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:name, :address)
+    params.require(:location).permit(:name, :address, :description, :photo)
   end
 
   # def wikipedia_scrapping(name)
