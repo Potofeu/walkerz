@@ -19,6 +19,7 @@ export default class extends Controller {
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
     this.#traceRoute();
+    this.btnNavigateTarget.style.left = "11px";
 
   }
 
@@ -62,26 +63,26 @@ export default class extends Controller {
         // Partie ajout des instructions de guidage
         const steps = data.routes[0].legs[0].steps; // On extrait les étapes de direction de l'API
 
-        // Pour afficher les élements de direction, de navigation sur la carte
-        const directions = new MapboxDirections({
-          accessToken: mapboxgl.accessToken,
-          unit: 'metric',
-          profile: 'mapbox/walking',
-          alternatives: false,
-          geometries: 'geojson',
-          language: "fr",
-          steps: true,
-          controls: { instructions: true },
-          flyTo: false
-        });
+        // // Pour afficher les élements de direction, de navigation sur la carte
+        // const directions = new MapboxDirections({
+        //   accessToken: mapboxgl.accessToken,
+        //   unit: 'metric',
+        //   profile: 'mapbox/walking',
+        //   alternatives: false,
+        //   geometries: 'geojson',
+        //   language: "fr",
+        //   steps: true,
+        //   controls: { instructions: true },
+        //   flyTo: false
+        // });
 
-        // Ajout de la navigation guidée dans la carte
-        this.map.addControl(directions, 'top-left');
-        // On fixe le point de départ
-        directions.setOrigin(steps[0].geometry.coordinates[0]);
-        // Le point de destination : directions.setDestination([data["longitude"], data["latitude"]]);
-        directions.setDestination(steps[steps.length-1].geometry.coordinates[0]);
-        // directions.setDestination(this.markersValue[this.markersValue.length-1].lng, this.markersValue[this.markersValue.length-1].lat);
+        // // Ajout de la navigation guidée dans la carte
+        // this.map.addControl(directions, 'top-left');
+        // // On fixe le point de départ
+        // directions.setOrigin(steps[0].geometry.coordinates[0]);
+        // // Le point de destination : directions.setDestination([data["longitude"], data["latitude"]]);
+        // directions.setDestination(steps[steps.length-1].geometry.coordinates[0]);
+        // // directions.setDestination(this.markersValue[this.markersValue.length-1].lng, this.markersValue[this.markersValue.length-1].lat);
 
         this.map.on("load", () => {
           this.map.addSource("route", {
