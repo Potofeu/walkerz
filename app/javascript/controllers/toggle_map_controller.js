@@ -34,7 +34,7 @@ export default class extends Controller {
    // Activer la géolocalisation
    locate(event) {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.handlePosition.bind(this));
     } else {
