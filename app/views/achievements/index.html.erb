@@ -1,0 +1,12 @@
+<div class="container text-center">
+  <div class="trophy">
+    <% if @total >= 30 %>
+      <i class="fa-solid fa-trophy gold"></i>
+    <% elsif @total >= 10 %>
+      <i class="fa-solid fa-trophy silver"></i>
+    <% else %>
+      <i class="fa-solid fa-trophy bronze"></i>
+    <% end %>
+  </div>
+  <p> Bravo, vous avez marché <strong><%= @total %>km !</strong></p>
+</div>
