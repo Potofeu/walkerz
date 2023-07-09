@@ -71,7 +71,8 @@ class HikesController < ApplicationController
       {
         lat: location.latitude,
         lng: location.longitude,
-        marker_html: render_to_string(partial: "marker", locals: {location: location})
+        marker_html: render_to_string(partial: "marker", locals: {location: location}),
+        markerfullscreen_html: render_to_string(partial: "markerfullscreen", locals: {location: location}),
       }
     end
   end

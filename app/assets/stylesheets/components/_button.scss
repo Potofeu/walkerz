@@ -47,3 +47,18 @@
   font-size: 40px;
   font-weight: normal;
 }
+
+.button-container {
+  position: absolute;
+  top: 10px;
+  left: 289px;
+  z-index: 9999;
+}
+
+#btn_navigate{
+  border-radius: 12px;
+}
+
+#btn-locate{
+  // margin-top: 1em;
+}

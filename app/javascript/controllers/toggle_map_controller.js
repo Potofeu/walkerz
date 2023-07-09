@@ -1,18 +1,22 @@
 import { Controller } from "@hotwired/stimulus"
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
+import map_controller from "./map_controller";
 
+// Connects to data-controller="toggle-map"
 export default class extends Controller {
-  static targets = ['btnNavigate', 'btnLocate'];
+  static targets = ['fullScreenMap', 'midScreenMap', 'btnNavigate', 'btnLocate'];
 
   static values = {
     apiKey: String,
     markers: Array
   }
 
-  connect() {
+  fullScreen(){
+    this.fullScreenMapTarget.classList.remove("d-none");
+    this.midScreenMapTarget.classList.add("d-none");
+
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: this.fullScreenMapTarget,
       style: "mapbox://styles/mapbox/streets-v10"
     });
 
@@ -22,12 +26,34 @@ export default class extends Controller {
 
   }
 
+  midScreen(){
+    this.fullScreenMapTarget.classList.add("d-none");
+    this.midScreenMapTarget.classList.remove("d-none");
+  }
+
+   // Activer la géolocalisation
+   locate(event) {
+    event.preventDefault();
+    console.log(event);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.handlePosition.bind(this));
+    } else {
+      console.log("La géolocalisation n'est pas prise en charge par votre navigateur.");
+    }
+  }
+
+  handlePosition(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+  }
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.marker_html);
+      const popup = new mapboxgl.Popup().setHTML(marker.markerfullscreen_html);
       // Create a HTML element for your custom marker
       const customMarker = document.createElement("div");
-      customMarker.innerHTML = marker.marker_html;
+      customMarker.innerHTML = marker.markerfullscreen_html;
       new mapboxgl.Marker(customMarker)
       .setLngLat([ marker.lng, marker.lat ])
       // .setPopup(popup)
@@ -111,24 +137,6 @@ export default class extends Controller {
           });
         });
       });
-  }
-
-  // Activer la géolocalisation
-  locate(event) {
-    event.preventDefault();
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.handlePosition.bind(this));
-    } else {
-      console.log("La géolocalisation n'est pas prise en charge par votre navigateur.");
-    }
-  }
-
-  handlePosition(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    // console.log(longitude, latitude);
-
   }
 
 }
