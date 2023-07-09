@@ -69,7 +69,32 @@
         </div>
     </div>
   </div>
-  <div class="row justify-content-evenly mb-5">
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center">Catégories de ce circuit: </h2>
+        <div class="badge-item">
+          <ul class="nav justify-content-evenly align-middle">
+            <% @hike.hikes_categories.each do |category| %>
+              <li class="badge rounded-pill text-white bg-warning"><%= category.category.name %></li>
+            <% end %>
+          </ul>
+        </div>
+      <p class="mt-3">Retrouvez la liste des lieux qui composent ce circuit: </p>
+        <div class="card-pot">
+          <% @hike.points_of_interests.each do |pot| %>
+          <li>
+            <ul><strong><%=  pot.location.name %></strong></ul>
+          </li>
+          <% end %>
+        </div>
+        <div class="end text-center mt-3">
+          <h5><i class="fa-solid fa-shoe-prints"></i></i><span id="text"> Walker'Z, bonne balade! </span> <i class="fa-solid fa-camera"></i></h5>
+        </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row justify-content-evenly my-3">
     <div class="col-8 text-center">
       <% if @hike.reviews.count <= 1 %>
         <h2 class="text-center">(<%= @hike.reviews.count%>) Commentaire</h2>
@@ -82,7 +107,6 @@
         <i class="fa-sharp fa-solid fa-download"></i> Ajouter
       <% end %>
     </div>
-    <hr>
     <div class="col-12">
       <% @hike.reviews.each do |review| %>
         <div class="comment py-1">
@@ -92,7 +116,7 @@
                 <i class="fas fa-star"></i>
               <% end %>
             </div>
-            <div class="col-6 text-right">
+            <div class="col-6 text-center">
               <p id="date">Le: <%= review.created_at.strftime("%d-%m-%Y") %></p>
             </div>
           </div>
