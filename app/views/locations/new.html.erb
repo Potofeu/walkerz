@@ -17,8 +17,9 @@
       <% end %>
     </div>
     <div class="mb-5">
-      <%= link_to("Valider mes étapes", hike_path(@hike), html_options = { data: { action: "click->update-poi-step#update" } }) %>
+      <%= link_to "Valider mes étapes", hike_path(@hike), class: "btn btn-orange", html: { data: { action: "click->update-poi-step#update" } }  %>
     </div>
     <p class ="d-none" data-update-poi-step-target="hike"><%= @hike.id %></p>
   </div>
 </div>
+ <%# html_options = { data: { action: "click->update-poi-step#update" } } %>
