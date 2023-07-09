@@ -46,7 +46,8 @@
         <div id="directions-instructions"></div>
     </div>
   </div>
-  <div class="row justify-content-evenly mb-5">
+  <hr>
+  <div class="row justify-content-evenly my-3">
     <div class="col-8 text-center">
       <% if @hike.reviews.count <= 1 %>
         <h2 class="text-center">(<%= @hike.reviews.count%>) Commentaire</h2>
@@ -59,7 +60,6 @@
         <i class="fa-sharp fa-solid fa-download"></i> Ajouter
       <% end %>
     </div>
-    <hr>
     <div class="col-12">
       <% @hike.reviews.each do |review| %>
         <div class="comment py-1">
@@ -69,7 +69,7 @@
                 <i class="fas fa-star"></i>
               <% end %>
             </div>
-            <div class="col-6 text-right">
+            <div class="col-6 text-center">
               <p id="date">Le: <%= review.created_at.strftime("%d-%m-%Y") %></p>
             </div>
           </div>
