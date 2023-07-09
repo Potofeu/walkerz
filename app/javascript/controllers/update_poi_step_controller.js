@@ -7,7 +7,6 @@ export default class extends Controller {
   update() {
     this.fillSteps()
     this.fetchAction()
-    this.navigateToHike()
   }
 
   fillSteps() {
@@ -31,10 +30,5 @@ export default class extends Controller {
         console.log(`${data} /// ${Math.random()}`)
       })
     })
-  }
-
-  navigateToHike () {
-    const newUrl = `https://walkerz-1174-8e6b7b77f2ee.herokuapp.com/hikes/${this.hikeTarget.innerText}`
-    window.location = newUrl;
   }
 }
