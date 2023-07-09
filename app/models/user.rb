@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :favorites
   has_many :hikes
+  has_many :achievements
 end
