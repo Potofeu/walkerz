@@ -57,6 +57,21 @@ class HikesController < ApplicationController
     @average = @sum / @hike.reviews.size.to_f
   end
 
+  def update
+    @hike.update(hike_params)
+    redirect_to hike_path(@hike)
+  end
+
+  def edit
+  end
+
+  def destroy
+    @hike = Hike.find(params[:id])
+    authorize @hike
+    @hike.destroy
+    redirect_to my_hikes_path
+  end
+
   private
 
   def hike_params

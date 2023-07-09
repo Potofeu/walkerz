@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :reviews, only: :destroy
 
+  resources :my_hikes, only: [:index, :show]
+  resources :hikes, only: [:update, :edit, :destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   # root "articles#index"

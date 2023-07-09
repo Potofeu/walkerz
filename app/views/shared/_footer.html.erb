@@ -30,6 +30,7 @@
           </div>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <span class="nav-user">Bonjour <%= current_user.first_name %></span>
+            <%= link_to "Mes circuits", my_hikes_path, class: "dropdown-item" %>
             <%= link_to "Deconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
           </div>
         </div>
