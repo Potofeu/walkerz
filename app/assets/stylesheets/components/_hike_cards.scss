@@ -120,3 +120,12 @@
 .card-txt img {
   height: 50px;
 }
+
+.card-pot {
+  list-style: square;
+  padding-left: 1rem;
+  ul {
+    margin-bottom: 0rem;
+    padding-left: 1rem;
+  }
+}
