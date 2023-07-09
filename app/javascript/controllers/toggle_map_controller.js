@@ -34,7 +34,7 @@ export default class extends Controller {
    // Activer la géolocalisation
    locate(event) {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.handlePosition.bind(this));
     } else {
@@ -85,6 +85,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         const routeCoordinates = data.routes[0].geometry.coordinates;
+
         // Partie ajout des instructions de guidage
         const steps = data.routes[0].legs[0].steps; // On extrait les étapes de direction de l'API
 
@@ -103,6 +104,7 @@ export default class extends Controller {
 
         // Ajout de la navigation guidée dans la carte
         this.map.addControl(directions, 'top-left');
+
         // On fixe le point de départ
         directions.setOrigin(steps[0].geometry.coordinates[0]);
         // Le point de destination : directions.setDestination([data["longitude"], data["latitude"]]);
