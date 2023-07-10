@@ -5,7 +5,6 @@ require('canvas-confetti')
 // Connects to data-controller="confetti"
 export default class extends Controller {
   connect() {
-    console.log("Hello from confetti controller")
     confetti()
   }
 }
