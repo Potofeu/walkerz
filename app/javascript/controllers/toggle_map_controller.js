@@ -1,9 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 import map_controller from "./map_controller";
+import confetti from "canvas-confetti"
+require('canvas-confetti')
+
 
 // Connects to data-controller="toggle-map"
 export default class extends Controller {
-  static targets = ['fullScreenMap', 'midScreenMap', 'btnNavigate', 'btnLocate'];
+  static targets = ['fullScreenMap', 'midScreenMap', 'btnNavigate', 'btnLocate', 'btnEndcircuit'];
 
   static values = {
     apiKey: String,
@@ -59,6 +62,11 @@ export default class extends Controller {
       // .setPopup(popup)
       .addTo(this.map)
     })
+  }
+
+  endOfCircuit(event){
+    // console.log("btnEndcircuit", "Terminée")
+    confetti();
   }
 
   #fitMapToMarkers() {
