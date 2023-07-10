@@ -61,12 +61,11 @@
                 <%= button_tag(id: 'btn-locate', type: "submit", class: "btn btn-warning", data: { action: 'click->toggle-map#locate', toggle_map_target: "btnLocate" }) do %>
                   <i class="fa-sharp fa-solid fa-location-crosshairs"></i>
                 <% end %>
-                <%= link_to "Circuit terminé", new_hike_path, class: "btn btn-warning", data: { action: 'click->toggle-map#endOfCircuit', toggle_map_target: "btnEndcircuit" } %>
+                <%= link_to "Circuit terminé", hike_achievements_path(@hike), data: { turbo_method: :post }, class: "btn btn-orange" %>
               </div>
             <% @hike.locations.each do |location| %>
                 <%= render 'offcanvas_fullscreen', location: location %>
             <% end %>
-
           </div>
         </div>
     </div>

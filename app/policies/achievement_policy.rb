@@ -12,4 +12,8 @@ class AchievementPolicy < ApplicationPolicy
       true
     end
   end
+
+  def create?
+    true
+  end
 end
