@@ -6,7 +6,7 @@ require('canvas-confetti')
 
 // Connects to data-controller="toggle-map"
 export default class extends Controller {
-  static targets = ['fullScreenMap', 'midScreenMap', 'btnNavigate', 'btnLocate', 'btnEndcircuit'];
+  static targets = ['fullScreenMap', 'midScreenMap', 'btnNavigate', 'btnLocate'];
 
   static values = {
     apiKey: String,
@@ -62,11 +62,6 @@ export default class extends Controller {
       // .setPopup(popup)
       .addTo(this.map)
     })
-  }
-
-  endOfCircuit(event){
-    // console.log("btnEndcircuit", "Terminée")
-    confetti();
   }
 
   #fitMapToMarkers() {
