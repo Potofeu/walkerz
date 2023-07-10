@@ -1,5 +1,6 @@
 class HikesController < ApplicationController
   before_action :set_hike, only: [:show, :edit, :update]
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     @hikes = policy_scope(Hike)

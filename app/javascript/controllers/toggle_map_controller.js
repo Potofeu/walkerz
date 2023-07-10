@@ -1,5 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import map_controller from "./map_controller";
+import confetti from "canvas-confetti"
+require('canvas-confetti')
+
 
 // Connects to data-controller="toggle-map"
 export default class extends Controller {

@@ -1,0 +1,17 @@
+<div class="container text-center" data-controller="confetti">
+  <div class="trophy">
+    <% if @total >= 30 %>
+      <i class="fa-solid fa-trophy gold"></i>
+      <p class="achievement-text"> Bravo, vous avez marché <strong><%= @total %>km !</strong></p>
+      <p class="achievement-text">Sky is the limit !</p>
+    <% elsif @total >= 10 %>
+      <i class="fa-solid fa-trophy silver"></i>
+      <p class="achievement-text"> Bravo, vous avez marché <strong><%= @total %>km !</strong></p>
+      <p class="achievement-text">Plus que <%= 30 - @total %> avant le prochain palier...</p>
+    <% else %>
+      <i class="fa-solid fa-trophy bronze"></i>
+      <p class="achievement-text"> Bravo, vous avez marché <strong><%= @total %>km !</strong></p>
+      <p class="achievement-text">Plus que <%= 10 - @total %> avant le prochain palier...</p>
+    <% end %>
+  </div>
+</div>
