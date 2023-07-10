@@ -46,6 +46,7 @@ class HikesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
   def show
     authorize @hike
 
@@ -59,6 +60,11 @@ class HikesController < ApplicationController
 
   def update
     @hike.update(hike_params)
+    @hike_categories = params[:hike][:category_ids].reject(&:empty?)
+    @hike.hikes_categories.destroy_all
+    @hike_categories.each do |category|
+      HikesCategory.create(hike_id: @hike.id, category_id: category.to_i)
+    end
     redirect_to hike_path(@hike)
   end
 

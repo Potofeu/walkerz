@@ -7,9 +7,9 @@ export default class extends Controller {
   static targets = ["icon", "temperature", "city"]
 
   connect() {
-    console.log(this.cityTarget.attributes.city.value);
-    console.log(this.cityTarget.attributes.api.value);
-    console.log(this.temperatureTarget);
+    // console.log(this.cityTarget.attributes.city.value);
+    // console.log(this.cityTarget.attributes.api.value);
+    // console.log(this.temperatureTarget);
 
     const city = this.cityTarget.attributes.city.value
     const apikey = this.cityTarget.attributes.api.value

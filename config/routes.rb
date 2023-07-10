@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :favorites, only: [:new, :create]
     resources :reviews, only: :create
     resources :locations, only: [:new, :create]
+    resources :hikes_categories, only: [:update]
   end
 
   resources :reviews, only: :destroy
