@@ -6,10 +6,15 @@ class ReviewsController < ApplicationController
     @hike = Hike.find(params[:hike_id])
     @review.user = @user
     @review.hike = @hike
-    if @review.save
-      redirect_to hike_path(@hike)
-    else
-      render hike_path(@hike), status: :unprocessable_entity
+
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to hike_path(@hike) }
+        format.json
+      else
+        format.html { render hike_path(@hike), status: :unprocessable_entity }
+        format.json
+      end
     end
   end
 

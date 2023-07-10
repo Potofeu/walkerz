@@ -1,0 +1,26 @@
+ <div class="comment py-1">
+  <div class="d-flex justify-content-between">
+    <div class="col-6 text-left">
+      <% review.rating.times do %>
+        <i class="fas fa-star"></i>
+      <% end %>
+    </div>
+    <div class="col-6 text-center">
+      <p id="date">Le: <%= review.created_at.strftime("%d-%m-%Y") %></p>
+    </div>
+  </div>
+  <p id="content"><%= review.content %></p>
+  <div class="d-flex justify-content-between">
+    <div class="col-6 text-center">
+      <p><%= review.user.first_name %></p>
+    </div>
+    <div class="col-6 text-center">
+      <% if review.user == current_user %>
+        <%= link_to review_path(review), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr de supprimer votre commentaire?"} do %>
+          <i class="fa-sharp fa-solid fa-circle-xmark"></i> Supprimer
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<hr>
