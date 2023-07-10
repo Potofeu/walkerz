@@ -3,8 +3,14 @@
 }
 .offcanvas-body p{
   color: $dark-blue;
+  font-size: 14px;
+  margin-top: 2px;
 }
 
 .offcanvas-title {
   color: #fff;
+}
+
+.offcanvas{
+  bottom: 83px!important;
 }

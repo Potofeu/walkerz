@@ -55,17 +55,26 @@
           </div>
           <div class="map-show fullscreen d-none" data-toggle-map-target="fullScreenMap">
               <div class="button-container" data-action= "click->toggle-map#midScreen" data-toggle-map-target="btnNavigate">
-                <%= button_tag(type: "submit", class: "btn btn-warning") do %>
-                  <i class="fa-solid fa-magnifying-glass-location"></i>
-                <% end %>
-                <%= button_tag(id: 'btn-locate', type: "submit", class: "btn btn-warning", data: { action: 'click->toggle-map#locate', toggle_map_target: "btnLocate" }) do %>
-                  <i class="fa-sharp fa-solid fa-location-crosshairs"></i>
-                <% end %>
-                <%= link_to "Circuit terminé", hike_achievements_path(@hike), data: { turbo_method: :post }, class: "btn btn-orange" %>
+                <div class="mb-2 m-2">
+                  <%= button_tag(type: "submit", class: "btn btn-warning") do %>
+                    <i class="fa-solid fa-magnifying-glass-location"></i>
+                  <% end %>
+                </div>
+                  <div class="mb-2 m-2">
+                    <%= button_tag(id: 'btn-locate', type: "submit", class: "btn btn-warning", data: { action: 'click->toggle-map#locate', toggle_map_target: "btnLocate" }) do %>
+                      <i class="fa-sharp fa-solid fa-location-crosshairs"></i>
+                    <% end %>
+                </div>
+                <div class="justify-content-start m-2">
+                  <%= link_to hike_achievements_path(@hike), data: { turbo_method: :post }, class: "btn btn-success" do %>
+                    <i class="fa-solid fa-flag-checkered"></i>
+                  <% end %>
+                </div>
+
               </div>
-            <% @hike.locations.each do |location| %>
-                <%= render 'offcanvas_fullscreen', location: location %>
-            <% end %>
+              <% @hike.locations.each do |location| %>
+                  <%= render 'offcanvas_fullscreen', location: location %>
+              <% end %>
           </div>
         </div>
     </div>
