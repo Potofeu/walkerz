@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
     { host: ENV["DOMAIN"] || "localhost:3000" }
   end
 
+  protect_from_forgery prepend: true
+
   private
 
   def skip_pundit?
