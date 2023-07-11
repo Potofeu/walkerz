@@ -1,1 +1,1 @@
-<%= link_to image_tag("Logo_walkerz_V5.png", height: 30, width: 30, alt: "Logo"), "#offcanvasBottom#{location.id}", data: {bs_toggle: "offcanvas", aria_controls: "offcanvasBottom"}, role: "button" %>
+<%= link_to "#{location.points_of_interest_ids.join}", "#offcanvasBottom#{location.id}", data: {bs_toggle: "offcanvas", aria_controls: "offcanvasBottom"}, role: "button", class: "marker-interest" %>

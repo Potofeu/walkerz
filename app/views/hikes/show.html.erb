@@ -90,39 +90,15 @@
           </ul>
         </div>
       <p class="mt-3">Retrouvez la liste des lieux qui composent ce circuit: </p>
-        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <!-- Add indicators based on the number of points of interests -->
-    <% @hike.points_of_interests.each_with_index do |pot, index| %>
-      <li data-bs-target="#myCarousel" data-bs-slide-to="<%= index %>" <%= 'class="active"' if index == 0 %>></li>
-    <% end %>
-  </ol>
-
-  <!-- Slides -->
-  <div class="carousel-inner">
-    <% @hike.points_of_interests.each_with_index do |pot, index| %>
-      <div class="carousel-item <%= 'active' if index == 0 %>">
-        <!-- Content for each slide -->
-        <div>
-          <h6 class="text-center"><strong>Etape <%= pot.step %>: <%= pot.location.name %></strong></h6>
-          <%= cl_image_tag pot.location.photo.key, height: 350, width: 366, crop: :fill %>
+        <div class="card-pot">
+          <% @hike.points_of_interests.order(:step).each do |pot| %>
+              <div>
+                <h6 class="text-center"><strong>Etape <%= pot.step %>: <%= pot.location.name %></strong></h6>
+                <%= cl_image_tag pot.location.photo.key, height: 350, width: 366, crop: :fill %>
+              </div>
+          <% end %>
+            </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-
-  <!-- Controls -->
-  <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </a>
-</div>
-
         <div class="end text-center mt-4">
           <h5><i class="fa-solid fa-shoe-prints"></i></i><span id="text"> Walker'Z, bonne balade! </span> <i class="fa-solid fa-camera"></i></h5>
         </div>

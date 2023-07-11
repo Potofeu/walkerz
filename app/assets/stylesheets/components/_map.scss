@@ -50,3 +50,15 @@
   width: 100%!important;
   max-width: 96%!important;
 }
+
+.marker-interest{
+  padding: 16px;
+  background-color: $orange;
+  border-radius: 50%;
+  font-size: 15px;
+  text-decoration: none !important;
+  margin: 0;
+  color: #000;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px lighgrey;
+}
