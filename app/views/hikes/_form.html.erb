@@ -2,11 +2,11 @@
   <%= f.input :name, label: false, placeholder: "Nom" %>
   <%= f.input :description, label: false, placeholder: "Description" %>
   <%= f.input :city, label: false, placeholder: "Ville" %>
-  <%= f.input :distance, label: false, placeholder: "distance" %>
+  <%= f.input :distance, label: false, placeholder: "Distance" %>
   <%= f.input :time, label: false, placeholder: "Temps estimé" %>
   <%= f.association :categories,
                     as: :check_boxes,
                     input_html: { class: "tag-selector" },
                     item_wrapper_class: 'tag-item' %>
-  <%= f.button :submit,  "Créer", class: "btn btn-orange" %>
+  <%= f.button :submit,  "Appliquer", class: "btn btn-orange" %>
 <% end %>
