@@ -91,7 +91,7 @@
         </div>
       <p class="mt-3">Retrouvez la liste des lieux qui composent ce circuit: </p>
         <div class="card-pot">
-          <% @hike.points_of_interests.each do |pot| %>
+          <% @hike.points_of_interests.order(:step).each do |pot| %>
               <div>
                 <h6 class="text-center"><strong>Etape <%= pot.step %>: <%= pot.location.name %></strong></h6>
                 <%= cl_image_tag pot.location.photo.key, height: 350, width: 366, crop: :fill %>
