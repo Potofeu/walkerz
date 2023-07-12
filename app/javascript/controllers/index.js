@@ -31,9 +31,6 @@ application.register("star-rating", StarRatingController)
 import ToggleMapController from "./toggle_map_controller"
 application.register("toggle-map", ToggleMapController)
 
-import TypedJsAchController from "./typed_js_ach_controller"
-application.register("typed-js-ach", TypedJsAchController)
-
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
 
