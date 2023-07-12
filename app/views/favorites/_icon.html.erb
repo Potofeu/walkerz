@@ -1,0 +1,12 @@
+ <% favorite = hike.user_favorite(current_user) %>
+  <% if favorite %>
+    <%= button_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr de
+    supprimer ce circuit?", action: "click->favorites#delete" }, form: { data: { favorites_target: "link" } }, remote: true, class: "favorite-icon" do %>
+      <i class="fa-solid fa-bookmark" id="orange"></i>
+    <% end %>
+  <% else %>
+    <%= button_to hike_favorites_path(hike), data: { action: "click->favorites#send" },
+     form: { data: { favorites_target: "link" } }, class: "favorite-icon" do %>
+      <i class="fa-solid fa-bookmark" id="grey"></i>
+    <% end %>
+  <% end %>
