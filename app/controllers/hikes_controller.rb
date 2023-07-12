@@ -50,7 +50,6 @@ class HikesController < ApplicationController
 
   def show
     authorize @hike
-
     @review = Review.new(hike: @hike)
     @sum = 0
     @hike.reviews.each do |review|

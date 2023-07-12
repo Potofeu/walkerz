@@ -8,7 +8,7 @@
         <div class="location-tag">
           <i class="fa-solid fa-bars"></i>
           <p><%= poi.location.name %></p>
-          <%= simple_form_for poi, html: { data: {update_poi_step_target: "form"}, class: "d-none"} do |f|%>
+          <%= simple_form_for poi, html: { data: {update_poi_step_target: "form"}} do |f|%>
             <%= f.input :step, input_html: { data: {update_poi_step_target: "input"} } %>
           <% end %>
           <p class="d-none" data-update-poi-step-target="long"><%= poi.location.longitude %></p>
