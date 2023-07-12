@@ -1,7 +1,9 @@
 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasFull<%= location.id%>" aria-labelledby="offcanvasFullLabel" data-bs-scroll="true">
 
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Etape</h5>
+    <% location.points_of_interests.each do |point| %>
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Etape <%= point.step %>: <%= point.location.name %></h5>
+    <% end %>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
