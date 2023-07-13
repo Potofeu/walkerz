@@ -7,6 +7,7 @@ export default class extends Controller {
   update() {
     this.fillSteps()
     this.fetchAction()
+    this.redirectUser()
   }
 
   fillSteps() {
@@ -30,5 +31,10 @@ export default class extends Controller {
         console.log(`${data} /// ${Math.random()}`)
       })
     })
+  }
+
+  redirectUser () {
+    const host = window.location.host
+    window.location.replace(`http://${host}/hikes/${this.hikeTarget.innerText}`)
   }
 }

@@ -8,6 +8,7 @@ PointsOfInterest.destroy_all
 Location.destroy_all
 Favorite.destroy_all
 Review.destroy_all
+Achievement.destroy_all
 Hike.destroy_all
 User.destroy_all
 
