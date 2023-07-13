@@ -18,7 +18,7 @@ export default class extends Controller {
   fetchAction() {
     this.formTargets.forEach(form => {
       const url = form.action
-      console.log(`${url} /// ${Math.random()}`)
+      // console.log(`${url} /// ${Math.random()}`)
       fetch(url, {
         method: "PATCH",
         headers: { "Accept": "text/plain" },
@@ -27,7 +27,7 @@ export default class extends Controller {
       .then(response => response.text())
       .then((data) => {
         // this.cardTarget.outerHTML = data;
-        console.log(`${data} /// ${Math.random()}`)
+        // console.log(`${data} /// ${Math.random()}`)
       })
     })
   }
