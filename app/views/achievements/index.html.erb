@@ -11,11 +11,11 @@
     <% elsif @total >= 10 %>
       <i class="fa-solid fa-trophy silver"></i>
       <p class="achievement-text"> Bravo, vous avez marché <strong><%= @total %>km !</strong></p>
-      <p class="achievement-text">Plus que <%= 30 - @total %> avant le prochain palier...</p>
+      <p class="achievement-text">Plus que <%= 30 - @total %> avant le palier OR...</p>
     <% else %>
       <i class="fa-solid fa-trophy bronze"></i>
       <p class="achievement-text"> Bravo, vous avez marché <strong><%= @total %>km !</strong></p>
-      <p class="achievement-text">Plus que <%= 10 - @total %> avant le prochain palier...</p>
+      <p class="achievement-text">Plus que <%= 10 - @total %> avant le palier ARGENT...</p>
     <% end %>
   </div>
 </div>
