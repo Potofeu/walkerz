@@ -24,26 +24,30 @@
 <div class="container my-4">
   <div>
     <h4 class="text-center">Mes circuits complétés:</h4>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Nom du circuit</th>
-          <th>km</th>
-        </tr>
-      </thead>
-    <% @user.achievements.order(:created_at).each do |achievement|%>
-      <tbody>
-        <tr>
-          <td><%= achievement.created_at.strftime("%d-%m-%Y") %></td>
-          <td> <%= link_to hike_path(achievement.hike) do %>
-            <em><%= achievement.hike.name.titleize %> </em> <i class="fa-solid fa-arrow-right"></i></td>
-          <% end %>
-          <td><%= achievement.hike.distance %></td>
-        </tr>
-      </tbody>
+    <% if @user.achievements.count == 0 %>
+      <p class="mb-3">Achevez un circuit pour démarrer le suivi !</p>
+    <% else %>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Nom du circuit</th>
+            <th>km</th>
+          </tr>
+        </thead>
+      <% @user.achievements.order(:created_at).each do |achievement|%>
+        <tbody>
+          <tr>
+            <td><%= achievement.created_at.strftime("%d-%m-%Y") %></td>
+            <td> <%= link_to hike_path(achievement.hike) do %>
+              <em><%= achievement.hike.name.titleize %> </em> <i class="fa-solid fa-arrow-right"></i></td>
+            <% end %>
+            <td><%= achievement.hike.distance %></td>
+          </tr>
+        </tbody>
+      <% end %>
+      </table>
     <% end %>
-    </table>
   </div>
 </div>
 <div class="mb-5">

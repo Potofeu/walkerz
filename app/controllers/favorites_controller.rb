@@ -12,14 +12,21 @@ class FavoritesController < ApplicationController
     authorize @favorite
     @favorite.hike = @hike
     @favorite.user = @user
-    if @favorite.save
-      if request.referrer.include?("favorites")
-        redirect_to favorites_path
+
+    respond_to do |format|
+      if @favorite.save
+        format.html {
+          if request.referrer.include?("favorites")
+            redirect_to favorites_path
+          else
+            redirect_to root_path
+          end
+        }
+        format.json
       else
-        redirect_to root_path
+        format.html { render root_path, status: :unprocessable_entity }
+        format.json
       end
-    else
-      render root_path, status: :unprocessable_entity
     end
   end
 
@@ -31,12 +38,24 @@ class FavoritesController < ApplicationController
 
   def destroy
     @favorite = Favorite.find(params[:id])
+    @hike = @favorite.hike
+    @user = current_user
     authorize @favorite
-    @favorite.destroy
-    if request.referrer.include?("favorites")
-      redirect_to favorites_path, status: :see_other
-    else
-      redirect_to root_path
+
+    respond_to do |format|
+      if @favorite.destroy
+        format.html {
+          if request.referrer.include?("favorites")
+            redirect_to favorites_path, status: :see_other
+          else
+            redirect_to root_path
+          end
+        }
+        format.json
+      else
+        format.html { render root_path, status: :unprocessable_entity }
+        format.json
+      end
     end
   end
 
