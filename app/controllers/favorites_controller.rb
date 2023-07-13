@@ -38,6 +38,8 @@ class FavoritesController < ApplicationController
 
   def destroy
     @favorite = Favorite.find(params[:id])
+    @hike = @favorite.hike
+    @user = current_user
     authorize @favorite
 
     respond_to do |format|

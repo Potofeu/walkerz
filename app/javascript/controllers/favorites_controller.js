@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import fetchWithToken from "../utils/fetch_with_token"
 
 // Connects to data-controller="favorites"
 export default class extends Controller {
@@ -27,7 +28,7 @@ export default class extends Controller {
        .then((data) => {
         // console.log(data)
         // console.log(this.buttonsTarget)
-        this.buttonsTarget.outerHTML = data.icon
+        this.buttonsTarget.innerHTML = data.icon
        })
   }
 
@@ -42,12 +43,12 @@ export default class extends Controller {
        method: "DELETE",
        headers: { "Accept": "application/json" },
      }
-    fetch(url, options)
+    fetchWithToken(url, options)
        .then(response => response.json())
        .then((data) => {
-        console.log(data)
-        console.log(this.buttonsTarget)
-        this.buttonsTarget.outerHTML = data.icon
+        // console.log(data)
+        // console.log(this.buttonsTarget)
+        this.buttonsTarget.innerHTML = data.icon
        })
   }
 }

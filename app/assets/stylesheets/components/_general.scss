@@ -14,3 +14,12 @@ body {
 .pale-background {
   background-color: $pale-pink;
 }
+
+#query {
+  border:none;
+
+  &:focus {
+    box-shadow: none;
+  }
+
+}

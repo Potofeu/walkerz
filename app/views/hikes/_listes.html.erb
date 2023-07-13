@@ -17,7 +17,7 @@
                     <div class="hike-info">
                       <strong><%= hike.name.titleize %></strong>
                       <br>Description: <%= hike.description.truncate(28) %>
-                      <br><i class="fa-solid fa-shoe-prints"></i> Durée: <%= hike.time %>
+                      <br><i class="fa-solid fa-shoe-prints"></i> Durée: <%= hike.time.to_i %>h
                     </div>
                   </div>
                 <% end %>
