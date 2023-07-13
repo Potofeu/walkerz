@@ -1,0 +1,200 @@
+.hike-cards {
+  margin-top: 14px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.hike-card {
+  position: relative;
+  z-index: 0;
+
+  a {
+    text-decoration: none;
+    color: $dark-blue;
+  }
+
+  .favorite-icon {
+    position: absolute;
+    z-index: 1;
+    right: 1em;
+    top: 1em;
+  }
+}
+
+.hike-card .hike-image {
+  background-position: center;
+  background-size: cover;
+  height: 250px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: right;
+  padding: 16px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  }
+
+.hike-image-show{
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  height: 10rem;
+  width: 100%;
+}
+
+.hike-card .hike-info p {
+  margin: 0px;
+  color: rgb(140, 140, 140);
+}
+
+#orange {
+  color: $orange;
+  opacity: 0.85;
+  font-size: 28px;
+  -webkit-text-stroke: 1px white;
+}
+
+#grey {
+  opacity: 0.70;
+  color: rgb(100, 100, 100);
+  font-size: 28px;
+  -webkit-text-stroke: 1px white;
+}
+
+.card-show{
+  display: flex;
+  align-items: center;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-show img{
+  width: 100%;
+  height: 250px;
+  margin-bottom: Opx;
+  opacity: 0.3;
+}
+
+.card-show h1{
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 36px;
+  padding: 0 24px;
+  font-weight: 500;
+  font-family: 'Brush Script MT', cursive;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  margin: auto;
+}
+
+.card-show-actions{
+  background: white;
+  border-bottom: 1px solid #e8e9ea;
+  display: flex;
+}
+
+.card-show-actions .card-txt{
+  border-right: 2px solid #f8f8f9;
+  flex: 1 1 100%;
+  padding: 5px 0;
+  text-align: center;
+}
+
+.card-txt:first-child {
+  border-left: 2px solid #f8f8f9;
+  flex: 1 1 100%;
+  padding: 3px 0;
+  text-align: center;
+}
+
+.card-txt h6{
+  padding-top: 5px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.card-txt p{
+  margin-bottom: 0px;
+  margin-top: 11px;
+}
+
+.card-txt img {
+  height: 50px;
+}
+
+.card-pot {
+  margin: 0 auto;
+  align-items: center;
+  img {
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  }
+
+  h6 {
+    margin-top: 10px;
+  }
+}
+
+.card-show-myhikes {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  align-items: center;
+  // display: flex;
+}
+
+
+.card-show-myhikes img {
+  width: 100%;
+  height: 250px;
+  margin-bottom: Opx;
+  opacity: 0.5;
+}
+
+
+
+.card-show-myhikes a {
+  text-decoration: none;
+}
+
+.card-show-myhikes h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 36px;
+  padding: 0 24px;
+  font-weight: 500;
+  font-family: 'Brush Script MT', cursive;
+  text-shadow: 1px 1px 2px rgba(2,84,100,1);
+}
+
+.card-myhike-content {
+  padding-top: 50px;
+  color: white;
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+#top {
+  text-align: center;
+}
+
+#white {
+  color: white;
+}
+
+#text-orange {
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(2,84,100,1);
+}
+
+.delete .fa-sharp {
+  color: white;
+}

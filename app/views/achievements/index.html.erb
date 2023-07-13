@@ -1,0 +1,51 @@
+<div class="top-page">
+  <h2>Félicitations !</h2>
+</div>
+
+<div class="container text-center" data-controller="confetti">
+  <div class="trophy">
+    <% if @total >= 30 %>
+      <i class="fa-solid fa-trophy gold"></i>
+      <p class="achievement-text"> Bravo, vous avez marché <strong><%= @total %>km !</strong></p>
+      <p class="achievement-text">Sky is the limit !</p>
+    <% elsif @total >= 10 %>
+      <i class="fa-solid fa-trophy silver"></i>
+      <p class="achievement-text"> Bravo, vous avez marché <strong><%= @total %>km !</strong></p>
+      <p class="achievement-text">Plus que <%= 30 - @total %> avant le prochain palier...</p>
+    <% else %>
+      <i class="fa-solid fa-trophy bronze"></i>
+      <p class="achievement-text"> Bravo, vous avez marché <strong><%= @total %>km !</strong></p>
+      <p class="achievement-text">Plus que <%= 10 - @total %> avant le prochain palier...</p>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+<div class="container my-4">
+  <div>
+    <h4 class="text-center">Mes circuits complétés:</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Nom du circuit</th>
+          <th>km</th>
+        </tr>
+      </thead>
+    <% @user.achievements.order(:created_at).each do |achievement|%>
+      <tbody>
+        <tr>
+          <td><%= achievement.created_at.strftime("%d-%m-%Y") %></td>
+          <td> <%= link_to hike_path(achievement.hike) do %>
+            <em><%= achievement.hike.name.titleize %> </em> <i class="fa-solid fa-arrow-right"></i></td>
+          <% end %>
+          <td><%= achievement.hike.distance %></td>
+        </tr>
+      </tbody>
+    <% end %>
+    </table>
+  </div>
+</div>
+<div class="mb-5">
+  <p>Faites-nous part de vos découvertes !</p>
+</div>

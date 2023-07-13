@@ -1,0 +1,12 @@
+<%= simple_form_for [hike, location] , html: { data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} } do |f|%>
+    <%= f.input :name,
+      input_html: {data: {address_autocomplete_target: "name"}, class: "d-none"},
+      wrapper_html: {data: {address_autocomplete_target: "wrapper"}}, label: false
+    %>
+    <%= f.input :address,
+      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}, label: false
+    %>
+    <%= f.input :description %>
+    <%= f.input :photo, label: false %>
+    <%= f.button :submit, "+ Nouvelle étape", class: "btn btn-orange" %>
+  <% end %>

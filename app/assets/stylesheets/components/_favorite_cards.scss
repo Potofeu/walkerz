@@ -1,0 +1,31 @@
+.fav-product {
+  overflow: hidden;
+  height: 140px;
+  background: white;
+  box-shadow: 0 0 6px rgba(229, 124, 35, 0.5);
+  display: flex;
+  border-radius: 4px;
+}
+
+.fav-product img {
+  height: 100%;
+  width: 140px;
+  object-fit: cover;
+}
+
+.fav-product h6 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  color: $orange;
+}
+
+.fav-product p {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.fav-product .fav-infos {
+  padding: 4px;
+  width: 100%;
+}

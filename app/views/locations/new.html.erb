@@ -1,0 +1,24 @@
+<div class="container text-center my-4">
+  <h2>Ajouter une étape</h2>
+  <%= render 'form' , hike: @hike, location: @location %>
+  <h2>Mes étapes:</h2>
+  <div data-controller="update-poi-step" class="mb-5">
+    <div data-controller="sortable" data-update-poi-step-target="list">
+      <% @hike.points_of_interests.each do |poi| %>
+        <div class="location-tag">
+          <i class="fa-solid fa-bars"></i>
+          <p><%= poi.location.name %></p>
+          <%= simple_form_for poi, html: { data: {update_poi_step_target: "form"}, class: "d-none"} do |f|%>
+            <%= f.input :step, input_html: { data: {update_poi_step_target: "input"} } %>
+          <% end %>
+          <p class="d-none" data-update-poi-step-target="long"><%= poi.location.longitude %></p>
+          <p class="d-none" data-update-poi-step-target="lat"><%= poi.location.latitude %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="mb-5">
+    <button class="btn btn-orange" data-action="click->update-poi-step#update">Valider mes étapes</button>
+    </div>
+    <p class ="d-none" data-update-poi-step-target="hike"><%= @hike.id %></p>
+  </div>
+</div>

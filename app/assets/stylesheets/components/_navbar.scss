@@ -1,0 +1,41 @@
+.navbar-lewagon {
+  background: $dark-blue;
+  border-bottom: 1px solid $light-orange;
+  margin-bottom: 12px;
+}
+
+.search-container {
+  border-radius: 1px solid $orange;
+}
+
+.search-container input {
+  border-color: inherit;
+  outline: none;
+  color: $pale-pink;
+  color: $orange;
+  border-radius: 50px;
+  padding: 4px 8px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.search-container button {
+  background: $dark-blue;
+  color: $orange;
+  border: none;
+}
+
+.top-page {
+    width: 100%;
+    height: 5rem;
+    color: $pale-pink;
+    text-align: center;
+    background-color: $dark-blue;
+    border-bottom: 1px solid $orange;
+
+    h2 {
+      padding-top: 20px;
+      font-size: 32px;
+      font-family: 'Brush Script MT', cursive;
+    }
+}

@@ -1,0 +1,144 @@
+<div class="container pale-background py-3">
+  <div class="row-fluid">
+
+    <div class="card-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @hike.locations.first.photo.key %>)">
+        <h1 id="top"><%= @hike.name %></h1>
+    </div>
+    <div class="card-show-actions" data-controller="weather">
+          <div class="card-txt">
+            <h6>Distance</h6>
+            <p><%= @hike.distance %> km</p>
+          </div>
+          <div class="card-txt">
+            <h6>Durée</h6>
+              <p><%= @hike.time %> h</p>
+          </div>
+          <div class="card-txt">
+            <h6 data-weather-target="city" city=<%= @hike.city %> api="<%= ENV['OPENWEATHER_API_KEY'] %>">Metéo</h6>
+            <img data-weather-target="icon">
+          </div>
+          <div class="card-txt">
+            <h6> T°</h6>
+            <p data-weather-target="temperature"></p>
+          </div>
+          <div class="card-txt">
+            <h6>Note</h6>
+            <p>
+            <% if @average.nan? %>
+              <i class="fas fa-star"></i>
+            <% else %>
+              <i class="fas fa-star"></i> <%= @average.round(2) %>
+            <% end %>
+            </p>
+          </div>
+    </div>
+    <div class="row-fluid">
+        <p class="mt-4 mb-4"><%= @hike.description %></p>
+        <div class="map-container" data-controller="toggle-map" data-toggle-map-markers-value="<%= @markers.to_json %>"
+            data-toggle-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          <div class="map-show" style="width: 100%; height:350px;" data-toggle-map-target="midScreenMap"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+              <div class="button-container" data-action= "click->toggle-map#fullScreen" data-map-target="btnNavigate">
+                <%= button_tag(type: "submit", class: "btn btn-warning") do %>
+                  <i class="fa-solid fa-magnifying-glass-location"></i>
+                <% end %>
+
+                <%= button_tag(id: 'btn-locate', type: "submit", class: "btn btn-warning", data: { action: 'click->map#locate', map_target: "btnLocate" }) do %>
+                  <i class="fa-sharp fa-solid fa-location-crosshairs"></i>
+                <% end %>
+              </div>
+            <% @hike.locations.each do |location| %>
+                <%= render 'offcanvas_etape', location: location %>
+            <% end %>
+          </div>
+          <div class="map-show fullscreen d-none" data-toggle-map-target="fullScreenMap">
+              <div class="button-container" data-action= "click->toggle-map#midScreen" data-toggle-map-target="btnNavigate">
+                <div class="mb-2 m-2">
+                  <%= button_tag(type: "submit", class: "btn btn-warning") do %>
+                    <i class="fa-solid fa-magnifying-glass-location"></i>
+                  <% end %>
+                </div>
+                  <div class="mb-2 m-2">
+                    <%= button_tag(id: 'btn-locate', type: "submit", class: "btn btn-warning", data: { action: 'click->toggle-map#locate', toggle_map_target: "btnLocate" }) do %>
+                      <i class="fa-sharp fa-solid fa-location-crosshairs"></i>
+                    <% end %>
+                </div>
+                <div class="justify-content-start m-2">
+                  <%= link_to hike_achievements_path(@hike), data: { turbo_method: :post }, class: "btn btn-success" do %>
+                    <i class="fa-solid fa-flag-checkered"></i>
+                  <% end %>
+                </div>
+
+              </div>
+              <% @hike.locations.each do |location| %>
+                  <%= render 'offcanvas_fullscreen', location: location %>
+              <% end %>
+          </div>
+        </div>
+    </div>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center">Catégories de ce circuit: </h2>
+        <div class="badge-item">
+          <ul class="nav justify-content-evenly align-middle">
+            <% @hike.hikes_categories.each do |category| %>
+              <li class="badge rounded-pill text-white bg-warning"><%= category.category.name %></li>
+            <% end %>
+          </ul>
+        </div>
+      <p class="mt-3">Retrouvez la liste des lieux qui composent ce circuit: </p>
+        <div class="card-pot">
+          <% @hike.points_of_interests.order(:step).each do |pot| %>
+              <div>
+                <h6 class="text-center"><strong>Etape <%= pot.step %>: <%= pot.location.name %></strong></h6>
+                <%= cl_image_tag pot.location.photo.key, height: 350, width: 366, crop: :fill %>
+              </div>
+          <% end %>
+            </div>
+        </div>
+        <div class="end text-center mt-4">
+          <h5><i class="fa-solid fa-shoe-prints"></i></i><span id="text"> Walker'Z, bonne balade! </span> <i class="fa-solid fa-camera"></i></h5>
+        </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row justify-content-evenly mb-5">
+    <div class="col-8 text-center">
+      <% if @hike.reviews.count <= 1 %>
+        <h2 class="text-center">(<%= @hike.reviews.count%>) Commentaire</h2>
+      <% else %>
+        <h2 class="text-center">(<%= @hike.reviews.count%>) Commentaires</h2>
+      <% end %>
+    </div>
+    <div class="col-4 text-center">
+      <%= link_to hike_path(anchor: 'form'), class: "btn btn-blue" do %>
+        <i class="fa-sharp fa-solid fa-download"></i> Ajouter
+      <% end %>
+    </div>
+    <hr>
+    <div class="col-12" data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
+      <div data-insert-in-list-target="items">
+        <% if @hike.reviews.blank? %>
+          <h4 class="text-center my-2">Postez le premier commentaire !</h4>
+          <hr>
+        <% else %>
+          <% @hike.reviews.each do |review| %>
+            <%= render 'review', review: review %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="col-10">
+          <h3 class="text-center">Ajouter un commentaire</h3>
+          <%= render 'reviews/form', hike: @hike, review: @review %>
+          <div id="form" class="my-1">
+            <%= link_to "Revenir tout en haut", hike_path(anchor: 'top'), class: "btn btn-blue" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

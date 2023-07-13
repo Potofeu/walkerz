@@ -1,0 +1,98 @@
+.footer {
+  position: fixed;
+  z-index: 10000;
+  height: 6rem;
+  max-height: 85px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border-top: 1px solid $orange;
+  font-size: 26px;
+  margin-bottom: auto;
+
+  h6 {
+  margin-top: 3px;
+  font-size: 14px;
+  }
+
+  .container {
+    padding-top: 0px;
+  }
+
+  a {
+    text-decoration: none;
+    color: $pale-pink;
+  }
+
+  img {
+    width: 70px;
+    vertical-align: middle;
+
+    &:hover {
+      margin: -0.2rem;
+      width: 80px;
+    }
+  }
+
+}
+
+.footer-logo{
+  margin: 0.6rem;
+}
+
+.footer-item {
+  text-align: center;
+  padding-top: 11px;
+
+  &:hover {
+    cursor: pointer;
+    font-size: 22px;
+    color: $orange;
+  }
+}
+
+.footer-item a:hover {
+    cursor: pointer;
+    font-size: 22px;
+    color: $orange;
+}
+
+.footer .dropup {
+  padding-top: 11px;
+  align-items: center;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+    font-size: 22px;
+    color: $orange;
+  }
+}
+
+.footer .dropdown-menu {
+  background-color: $dark-blue;
+  color: white;
+}
+
+.footer .dropdown-item {
+
+  &:hover {
+    background-color: $light-orange;
+    color: white;
+    font-size: 14px;
+  }
+}
+
+.nav-user{
+  display: block;
+  width: 100%;
+  padding: 4px var(--bs-dropdown-item-padding-x);
+  font-weight: 400;
+  color: white;
+  text-align: inherit;
+}
+
+.new-hike-form {
+  margin-bottom: 25px;
+}

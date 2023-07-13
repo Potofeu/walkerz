@@ -1,0 +1,3 @@
+<% location.points_of_interests.each do |poi| %>
+  <%= link_to "#{poi.step}", "#offcanvasFull#{location.id}", data: { bs_toggle: "offcanvas", aria_controls: "offcanvasBottom" }, role: "button", class: "marker-interest" %>
+<% end %>

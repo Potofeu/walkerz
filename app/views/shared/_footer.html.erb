@@ -1,0 +1,64 @@
+<div class="footer">
+  <div class="container">
+    <% if user_signed_in? %>
+      <div class="d-flex justify-content-between" style="height:80px;">
+        <div class="footer-item">
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            <h6>Explorer</h6>
+        </div>
+        <div class="footer-item">
+          <%= link_to new_hike_path do %>
+            <i class="fa-solid fa-circle-plus"></i>
+            <h6>Parcours</h6>
+          <% end %>
+        </div>
+        <div class="footer-logo">
+          <%= link_to root_path do %>
+            <%= image_tag "Logo_walkerz_V5.png" %>
+          <% end %>
+        </div>
+        <div class="footer-item">
+          <%= link_to favorites_path do%>
+            <i class="fa-regular fa-bookmark"></i>
+            <h6>Favoris</h6>
+          <% end %>
+        </div>
+        <div class="dropup">
+          <div class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-regular fa-user"></i>
+            <h6>Profil</h6>
+          </div>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <span class="nav-user">Bonjour <%= current_user.first_name %></span>
+            <%= link_to "Mes circuits", my_hikes_path, class: "dropdown-item" %>
+            <%= link_to "Mes stats", achievements_path, class: "dropdown-item" %>
+            <%= link_to "Deconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+          </div>
+        </div>
+    <% else %>
+      <div class="d-flex justify-content-evenly">
+        <div class="footer-item">
+          <%= link_to new_user_registration_path, class: "footer-link" do %>
+            <div class= "text-center">
+              <i class="fa-solid fa-user-plus"></i>
+              <h6>Inscription</h6>
+            </div>
+          <% end %>
+        </div>
+        <div class="footer-logo">
+          <%= link_to root_path do %>
+            <%= image_tag "Logo_walkerz_V5.png" %>
+          <% end %>
+        </div>
+        <div class="footer-item">
+          <%= link_to new_user_session_path, class: "footer-link" do %>
+            <div class= "text-center">
+              <i class="fa-solid fa-user-check"></i>
+              <h6>Connexion</h6>
+            </div>
+          <% end %>
+        </div>
+    <% end %>
+    </div>
+  </div>
+</div>

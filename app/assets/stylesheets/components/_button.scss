@@ -1,0 +1,64 @@
+.btn-orange {
+  background: $orange;
+  color: $pale-pink;
+  position:relative;
+  height: 28px;
+  font-size: 14px;
+  padding: 4px 6px;
+  cursor: pointer;
+  transition:0.15s ease all;
+  border-radius: 12px;
+}
+
+.btn-orange a{
+  text-decoration: none;
+  color: white;
+}
+
+.btn-orange:hover {
+  background: $pale-pink;
+  color:$orange;
+  border: 2px solid $orange;
+}
+
+.btn-blue {
+  background: $dark-blue;
+  color: $pale-pink;
+  position: relative;
+  height: 28px;
+  font-size: 14px;
+  padding: 4px 6px;
+  cursor: pointer;
+  transition: 0.15s ease all;
+  border-radius: 12px;
+}
+
+.btn-blue:hover {
+  background: $pale-pink;
+  color:$dark-blue;
+  border: 2px solid $dark-blue;
+}
+
+.new-location-button {
+  color: orange;
+  background-color: white;
+  width: 50px;
+  margin: 0 auto;
+  font-size: 40px;
+  font-weight: normal;
+}
+
+.button-container {
+  position: absolute;
+  top: 10px;
+  left: 289px;
+  z-index: 9999;
+}
+
+#btn_navigate{
+  border-radius: 12px;
+}
+
+#btn-locate{
+  // margin-top: 1em;
+}
